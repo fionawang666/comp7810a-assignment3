@@ -1,0 +1,63 @@
+Compiling 3 files with Solc 0.8.24
+Solc 0.8.24 finished in 1.99s
+Compiler run successful!
+
+Ran 7 tests for test/exercises/01_BridgeTasks.t.sol:BridgeTasksTest
+[PASS] test_Ex2_RealHoldingsIsJustANumber() (gas: 74959)
+[PASS] test_Ex2_SharesExistWhileTheCustodianHoldsNothing() (gas: 272322)
+[PASS] test_Ex3_OneCallMovesTheWholeBook() (gas: 550895)
+[PASS] test_Ex3_TheClaimFloats_TheShareCountDoesNot() (gas: 334379)
+[PASS] test_Ex4_FreezeBeatsConfiscation() (gas: 352791)
+[PASS] test_Ex4_NoKyc_NoShares_EvenIfYouPay() (gas: 220312)
+[PASS] test_Ex4_TransferChecksBothEndpoints() (gas: 293070)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 3.90ms (1.38ms CPU time)
+
+Ran 11 tests for test/exercises/02_QueueTasks.t.sol:QueueTasksTest
+[PASS] test_Ex5_1_AssetsAtNav_AtHigherNav() (gas: 11485)
+[PASS] test_Ex5_1_AssetsAtNav_AtPar() (gas: 5804)
+[PASS] test_Ex5_2_Enqueue_EscrowsSharesAndLocksNav() (gas: 560980)
+[PASS] test_Ex5_2_Enqueue_LocksTheRate() (gas: 577245)
+[PASS] test_Ex5_3_Settle_NeedsTheVaultToHoldCash() (gas: 1101713)
+[PASS] test_Ex5_3_Settle_PartialFillCarriesTheRemainder() (gas: 1140255)
+[PASS] test_Ex5_3_Settle_PaysTheWholeQueue() (gas: 1177787)
+[PASS] test_Ex5_3_Settle_StopsWhenItCannotCoverTheHead() (gas: 565195)
+[PASS] test_Ex5_4_Claim_CannotBeDrawnTwice() (gas: 770880)
+[PASS] test_Ex5_4_Claim_PaysOutAndZeroesTheBalance() (gas: 792176)
+[PASS] test_Ex5_4_Claim_RevertsWithNothingToClaim() (gas: 34098)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 3.66ms (2.54ms CPU time)
+
+Ran 3 tests for test/regression/RedemptionQueueRegression.t.sol:RedemptionQueueRegressionTest
+[PASS] test_FailedEscrowTransferCreatesNoTicketOrLiability() (gas: 322535)
+[PASS] test_FifoDoesNotSkipAnUnaffordableHeadForASmallerTicket() (gas: 1023068)
+[PASS] test_InsufficientReservesRollBackTheWholeBatch() (gas: 1384815)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 1.52ms (851.30µs CPU time)
+
+Ran 2 tests for test/exercises/03_InvariantTasks.t.sol:InvariantTasksTest
+[PASS]
+InvariantTasksTest invariants:
+[PASS] invariant_EscrowConservation
+[PASS] invariant_SettlementSolvency
+ InvariantTasksTest invariants (runs: 256, calls: 128000, reverts: 0)
+
+╭---------------+-----------+-------+---------+----------╮
+| Contract      | Selector  | Calls | Reverts | Discards |
++========================================================+
+| BridgeHandler | attest    | 21362 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | claim     | 21378 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | enqueue   | 21233 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | fundVault | 21217 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | settle    | 21405 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | subscribe | 21405 | 0       | 0        |
+╰---------------+-----------+-------+---------+----------╯
+
+[PASS] test_Ex6_HandlerMakesProgressThroughTPlusOne() (gas: 1487231)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 17.78s (17.77s CPU time)
+
+Ran 4 test suites in 17.78s (17.79s CPU time): 23 tests passed, 0 failed, 0 skipped (23 total tests)
+
+EXIT_CODE=0

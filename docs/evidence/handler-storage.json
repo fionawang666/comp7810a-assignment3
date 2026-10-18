@@ -1,0 +1,646 @@
+{
+  "storage": [
+    {
+      "astId": 46,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "stdstore",
+      "offset": 0,
+      "slot": "0",
+      "type": "t_struct(StdStorage)8872_storage"
+    },
+    {
+      "astId": 209,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_failed",
+      "offset": 0,
+      "slot": "8",
+      "type": "t_bool"
+    },
+    {
+      "astId": 3075,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_stdChainsInitialized",
+      "offset": 1,
+      "slot": "8",
+      "type": "t_bool"
+    },
+    {
+      "astId": 3096,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_chains",
+      "offset": 0,
+      "slot": "9",
+      "type": "t_mapping(t_string_memory_ptr,t_struct(Chain)3091_storage)"
+    },
+    {
+      "astId": 3100,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_defaultRpcUrls",
+      "offset": 0,
+      "slot": "10",
+      "type": "t_mapping(t_string_memory_ptr,t_string_storage)"
+    },
+    {
+      "astId": 3104,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_idToAlias",
+      "offset": 0,
+      "slot": "11",
+      "type": "t_mapping(t_uint256,t_string_storage)"
+    },
+    {
+      "astId": 3107,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_fallbackToDefaultRpcUrls",
+      "offset": 0,
+      "slot": "12",
+      "type": "t_bool"
+    },
+    {
+      "astId": 4139,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_gasMeteringOff",
+      "offset": 1,
+      "slot": "12",
+      "type": "t_bool"
+    },
+    {
+      "astId": 6253,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_stdstore",
+      "offset": 0,
+      "slot": "13",
+      "type": "t_struct(StdStorage)8872_storage"
+    },
+    {
+      "astId": 7392,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_excludedContracts",
+      "offset": 0,
+      "slot": "21",
+      "type": "t_array(t_address)dyn_storage"
+    },
+    {
+      "astId": 7395,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_excludedSenders",
+      "offset": 0,
+      "slot": "22",
+      "type": "t_array(t_address)dyn_storage"
+    },
+    {
+      "astId": 7398,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedContracts",
+      "offset": 0,
+      "slot": "23",
+      "type": "t_array(t_address)dyn_storage"
+    },
+    {
+      "astId": 7401,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedSenders",
+      "offset": 0,
+      "slot": "24",
+      "type": "t_array(t_address)dyn_storage"
+    },
+    {
+      "astId": 7404,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_excludedArtifacts",
+      "offset": 0,
+      "slot": "25",
+      "type": "t_array(t_string_storage)dyn_storage"
+    },
+    {
+      "astId": 7407,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedArtifacts",
+      "offset": 0,
+      "slot": "26",
+      "type": "t_array(t_string_storage)dyn_storage"
+    },
+    {
+      "astId": 7411,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedArtifactSelectors",
+      "offset": 0,
+      "slot": "27",
+      "type": "t_array(t_struct(FuzzArtifactSelector)7383_storage)dyn_storage"
+    },
+    {
+      "astId": 7415,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_excludedSelectors",
+      "offset": 0,
+      "slot": "28",
+      "type": "t_array(t_struct(FuzzSelector)7377_storage)dyn_storage"
+    },
+    {
+      "astId": 7419,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedSelectors",
+      "offset": 0,
+      "slot": "29",
+      "type": "t_array(t_struct(FuzzSelector)7377_storage)dyn_storage"
+    },
+    {
+      "astId": 7423,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "_targetedInterfaces",
+      "offset": 0,
+      "slot": "30",
+      "type": "t_array(t_struct(FuzzInterface)7389_storage)dyn_storage"
+    },
+    {
+      "astId": 13938,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "IS_TEST",
+      "offset": 0,
+      "slot": "31",
+      "type": "t_bool"
+    },
+    {
+      "astId": 44361,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "usdc",
+      "offset": 1,
+      "slot": "31",
+      "type": "t_contract(MockUSDC)42963"
+    },
+    {
+      "astId": 44364,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "tBill",
+      "offset": 0,
+      "slot": "32",
+      "type": "t_contract(TBillToken)43209"
+    },
+    {
+      "astId": 44367,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "vault",
+      "offset": 0,
+      "slot": "33",
+      "type": "t_contract(TBillVault)43697"
+    },
+    {
+      "astId": 44370,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "queue",
+      "offset": 0,
+      "slot": "34",
+      "type": "t_contract(RedemptionQueue)44338"
+    },
+    {
+      "astId": 44374,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "users",
+      "offset": 0,
+      "slot": "35",
+      "type": "t_array(t_address)3_storage"
+    },
+    {
+      "astId": 44376,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_enqueues",
+      "offset": 0,
+      "slot": "38",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44378,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_settles",
+      "offset": 0,
+      "slot": "39",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44380,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_claims",
+      "offset": 0,
+      "slot": "40",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44382,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_enqueuedShares",
+      "offset": 0,
+      "slot": "41",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44384,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_settledTickets",
+      "offset": 0,
+      "slot": "42",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44386,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_burnedShares",
+      "offset": 0,
+      "slot": "43",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44388,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_settledAssets",
+      "offset": 0,
+      "slot": "44",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44390,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_claimedAssets",
+      "offset": 0,
+      "slot": "45",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 44392,
+      "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+      "label": "ghost_fundedAssets",
+      "offset": 0,
+      "slot": "46",
+      "type": "t_uint256"
+    }
+  ],
+  "types": {
+    "t_address": {
+      "encoding": "inplace",
+      "label": "address",
+      "numberOfBytes": "20"
+    },
+    "t_array(t_address)3_storage": {
+      "encoding": "inplace",
+      "label": "address[3]",
+      "numberOfBytes": "96",
+      "base": "t_address"
+    },
+    "t_array(t_address)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "address[]",
+      "numberOfBytes": "32",
+      "base": "t_address"
+    },
+    "t_array(t_bytes32)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "bytes32[]",
+      "numberOfBytes": "32",
+      "base": "t_bytes32"
+    },
+    "t_array(t_bytes4)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "bytes4[]",
+      "numberOfBytes": "32",
+      "base": "t_bytes4"
+    },
+    "t_array(t_string_storage)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "string[]",
+      "numberOfBytes": "32",
+      "base": "t_string_storage"
+    },
+    "t_array(t_struct(FuzzArtifactSelector)7383_storage)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "struct StdInvariant.FuzzArtifactSelector[]",
+      "numberOfBytes": "32",
+      "base": "t_struct(FuzzArtifactSelector)7383_storage"
+    },
+    "t_array(t_struct(FuzzInterface)7389_storage)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "struct StdInvariant.FuzzInterface[]",
+      "numberOfBytes": "32",
+      "base": "t_struct(FuzzInterface)7389_storage"
+    },
+    "t_array(t_struct(FuzzSelector)7377_storage)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "struct StdInvariant.FuzzSelector[]",
+      "numberOfBytes": "32",
+      "base": "t_struct(FuzzSelector)7377_storage"
+    },
+    "t_bool": {
+      "encoding": "inplace",
+      "label": "bool",
+      "numberOfBytes": "1"
+    },
+    "t_bytes32": {
+      "encoding": "inplace",
+      "label": "bytes32",
+      "numberOfBytes": "32"
+    },
+    "t_bytes4": {
+      "encoding": "inplace",
+      "label": "bytes4",
+      "numberOfBytes": "4"
+    },
+    "t_bytes_storage": {
+      "encoding": "bytes",
+      "label": "bytes",
+      "numberOfBytes": "32"
+    },
+    "t_contract(MockUSDC)42963": {
+      "encoding": "inplace",
+      "label": "contract MockUSDC",
+      "numberOfBytes": "20"
+    },
+    "t_contract(RedemptionQueue)44338": {
+      "encoding": "inplace",
+      "label": "contract RedemptionQueue",
+      "numberOfBytes": "20"
+    },
+    "t_contract(TBillToken)43209": {
+      "encoding": "inplace",
+      "label": "contract TBillToken",
+      "numberOfBytes": "20"
+    },
+    "t_contract(TBillVault)43697": {
+      "encoding": "inplace",
+      "label": "contract TBillVault",
+      "numberOfBytes": "20"
+    },
+    "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_struct(FindData)8847_storage)))": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => mapping(bytes4 => mapping(bytes32 => struct FindData)))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_bytes4,t_mapping(t_bytes32,t_struct(FindData)8847_storage))"
+    },
+    "t_mapping(t_bytes32,t_struct(FindData)8847_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FindData)",
+      "numberOfBytes": "32",
+      "value": "t_struct(FindData)8847_storage"
+    },
+    "t_mapping(t_bytes4,t_mapping(t_bytes32,t_struct(FindData)8847_storage))": {
+      "encoding": "mapping",
+      "key": "t_bytes4",
+      "label": "mapping(bytes4 => mapping(bytes32 => struct FindData))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_bytes32,t_struct(FindData)8847_storage)"
+    },
+    "t_mapping(t_string_memory_ptr,t_string_storage)": {
+      "encoding": "mapping",
+      "key": "t_string_memory_ptr",
+      "label": "mapping(string => string)",
+      "numberOfBytes": "32",
+      "value": "t_string_storage"
+    },
+    "t_mapping(t_string_memory_ptr,t_struct(Chain)3091_storage)": {
+      "encoding": "mapping",
+      "key": "t_string_memory_ptr",
+      "label": "mapping(string => struct StdChains.Chain)",
+      "numberOfBytes": "32",
+      "value": "t_struct(Chain)3091_storage"
+    },
+    "t_mapping(t_uint256,t_string_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => string)",
+      "numberOfBytes": "32",
+      "value": "t_string_storage"
+    },
+    "t_string_memory_ptr": {
+      "encoding": "bytes",
+      "label": "string",
+      "numberOfBytes": "32"
+    },
+    "t_string_storage": {
+      "encoding": "bytes",
+      "label": "string",
+      "numberOfBytes": "32"
+    },
+    "t_struct(Chain)3091_storage": {
+      "encoding": "inplace",
+      "label": "struct StdChains.Chain",
+      "numberOfBytes": "128",
+      "members": [
+        {
+          "astId": 3084,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "name",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 3086,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "chainId",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 3088,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "chainAlias",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 3090,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "rpcUrl",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_string_storage"
+        }
+      ]
+    },
+    "t_struct(FindData)8847_storage": {
+      "encoding": "inplace",
+      "label": "struct FindData",
+      "numberOfBytes": "128",
+      "members": [
+        {
+          "astId": 8840,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "slot",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 8842,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "offsetLeft",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 8844,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "offsetRight",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 8846,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "found",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_bool"
+        }
+      ]
+    },
+    "t_struct(FuzzArtifactSelector)7383_storage": {
+      "encoding": "inplace",
+      "label": "struct StdInvariant.FuzzArtifactSelector",
+      "numberOfBytes": "64",
+      "members": [
+        {
+          "astId": 7379,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "artifact",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 7382,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "selectors",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_bytes4)dyn_storage"
+        }
+      ]
+    },
+    "t_struct(FuzzInterface)7389_storage": {
+      "encoding": "inplace",
+      "label": "struct StdInvariant.FuzzInterface",
+      "numberOfBytes": "64",
+      "members": [
+        {
+          "astId": 7385,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "addr",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 7388,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "artifacts",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_string_storage)dyn_storage"
+        }
+      ]
+    },
+    "t_struct(FuzzSelector)7377_storage": {
+      "encoding": "inplace",
+      "label": "struct StdInvariant.FuzzSelector",
+      "numberOfBytes": "64",
+      "members": [
+        {
+          "astId": 7373,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "addr",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 7376,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "selectors",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_bytes4)dyn_storage"
+        }
+      ]
+    },
+    "t_struct(StdStorage)8872_storage": {
+      "encoding": "inplace",
+      "label": "struct StdStorage",
+      "numberOfBytes": "256",
+      "members": [
+        {
+          "astId": 8856,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "finds",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_mapping(t_address,t_mapping(t_bytes4,t_mapping(t_bytes32,t_struct(FindData)8847_storage)))"
+        },
+        {
+          "astId": 8859,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_keys",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_bytes32)dyn_storage"
+        },
+        {
+          "astId": 8861,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_sig",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bytes4"
+        },
+        {
+          "astId": 8863,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_depth",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 8865,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_target",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_address"
+        },
+        {
+          "astId": 8867,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_set",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 8869,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_enable_packed_slots",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_bool"
+        },
+        {
+          "astId": 8871,
+          "contract": "test/exercises/03_InvariantTasks.t.sol:BridgeHandler",
+          "label": "_calldata",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_bytes_storage"
+        }
+      ]
+    },
+    "t_uint256": {
+      "encoding": "inplace",
+      "label": "uint256",
+      "numberOfBytes": "32"
+    }
+  }
+}

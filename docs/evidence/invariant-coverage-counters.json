@@ -1,0 +1,35 @@
+{
+  "raw_log": "invariant-coverage-storage.log",
+  "actual_final_handler_storage": {
+    "ghost_fundedAssets": 300000000000,
+    "ghost_enqueues": 62,
+    "ghost_enqueuedShares": 252413272998460666652037,
+    "ghost_settles": 30,
+    "ghost_settledTickets": 62,
+    "ghost_burnedShares": 252413272998460666652037,
+    "ghost_settledAssets": 292136409111,
+    "ghost_claims": 10,
+    "ghost_claimedAssets": 292136409111
+  },
+  "last_write_lines": {
+    "ghost_fundedAssets": 8004,
+    "ghost_enqueues": 10937,
+    "ghost_enqueuedShares": 10938,
+    "ghost_settles": 10977,
+    "ghost_settledTickets": 10978,
+    "ghost_burnedShares": 10979,
+    "ghost_settledAssets": 8954,
+    "ghost_claims": 9280,
+    "ghost_claimedAssets": 9281
+  },
+  "independent_event_cross_check": {
+    "successful_enqueues": 62,
+    "settlement_calls_with_progress": 30,
+    "settled_tickets": 62,
+    "settled_tickets_with_positive_assets": 13,
+    "successful_claims": 10,
+    "claimed_assets": 292136409111,
+    "settled_assets": 292136409111
+  },
+  "test_exit_code": 0
+}

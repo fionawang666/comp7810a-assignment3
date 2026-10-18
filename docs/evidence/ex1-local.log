@@ -1,0 +1,171 @@
+LOCAL ANVIL ONLY: chain ID 31337; receipt output shows selected real fields.
+$ cast rpc eth_accounts --rpc-url http://127.0.0.1:18546
+["0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"]
+EXIT_CODE=0
+DEPLOYER=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+$ forge script script/Deploy.s.sol:Deploy --rpc-url http://127.0.0.1:18546 --sender 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --broadcast --color never
+No files changed, compilation skipped
+Script ran successfully.
+
+== Return ==
+deployed: struct Deploy.Deployment Deployment({ usdc: 0x5FbDB2315678afecb367f032d93F642f64180aa3, compliance: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512, feed: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0, tBill: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9, custodian: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9, vault: 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707, queue: 0x0165878A594ca255338adfa4d48449f69242Eb8F })
+
+== Logs ==
+  admin      : 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  MockUSDC   : 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  Compliance : 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  NAV feed   : 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  TBillToken : 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+  Custodian  : 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+  TBillVault : 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+  Queue      : 0x0165878A594ca255338adfa4d48449f69242Eb8F
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 31337
+
+Estimated max fee per gas: 2.000000001 gwei
+Estimated base fee per gas: 1 gwei
+Estimated max priority fee per gas: 0.000000001 gwei
+
+Estimated total gas used for script: 6614405
+
+Estimated amount required: 0.013228810006614405 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /workspace/comp7810a-assignment3/broadcast/Deploy.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /workspace/comp7810a-assignment3/cache/Deploy.s.sol/31337/run-latest.json
+
+Warning: Detected artifacts built from source files that no longer exist. Run `forge clean` to make sure builds are in sync with project files.
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper46.sol
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper49.sol
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper44.sol
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper41.sol
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper42.sol
+ - /workspace/comp7810a-assignment3/foundry-pp/DeployHelper45.sol
+EXIT_CODE=0
+$ python3 scripts/check-deployment.py --chain-id 31337
+PASS chain ID 31337
+PASS USDC deployed code
+PASS COMPLIANCE deployed code
+PASS FEED deployed code
+PASS TBILL deployed code
+PASS CUSTODIAN deployed code
+PASS VAULT deployed code
+PASS QUEUE deployed code
+PASS TBILL.compliance
+PASS VAULT.usdc
+PASS VAULT.tBill
+PASS VAULT.navFeed
+PASS VAULT.custodian
+PASS VAULT.queue
+PASS QUEUE.vault
+PASS QUEUE.tBill
+PASS QUEUE.usdc
+PASS USDC.decimals
+PASS TBILL.decimals
+PASS FEED.decimals
+PASS COMPLIANCE.isWhitelisted
+PASS COMPLIANCE.isWhitelisted
+PASS COMPLIANCE.hasRole
+PASS TBILL.hasRole
+PASS CUSTODIAN.hasRole
+PASS VAULT.hasRole
+PASS QUEUE.hasRole
+PASS COMPLIANCE.hasRole
+PASS TBILL.hasRole
+PASS TBILL.hasRole
+PASS TBILL.hasRole
+PASS TBILL.hasRole
+PASS CUSTODIAN.hasRole
+PASS CUSTODIAN.hasRole
+PASS VAULT.hasRole
+PASS VAULT.hasRole
+PASS QUEUE.hasRole
+PASS all seven contracts: code and 29 decimal/wiring/permission checks
+EXIT_CODE=0
+$ cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 faucet(address,uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 1000000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0x586a678c7b0561a67298a510f992e19d6519695f47fa0b73db99dc37f8284579", "status": "0x1", "blockNumber": "0x2"}
+EXIT_CODE=0
+$ cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 approve(address,uint256) 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 1000000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0x4b2cb301e0fbfb65d652cae82574f052d97d1481f3e66f76072cf335f3764efa", "status": "0x1", "blockNumber": "0x3"}
+EXIT_CODE=0
+$ cast send 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 subscribe(uint256) 1000000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0xf266f7dcc6c3b61879a829743e7f3238b7fc8b11397e4919ba7c4b9745e70e3f", "status": "0x1", "blockNumber": "0x4"}
+EXIT_CODE=0
+$ cast call 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 balanceOf(address)(uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url http://127.0.0.1:18546
+1000000000000000000000 [1e21]
+EXIT_CODE=0
+$ cast call 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 realHoldings()(uint256) --rpc-url http://127.0.0.1:18546
+0
+EXIT_CODE=0
+$ cast send 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 attest(int256) 125000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0x859195e88f4bc460078ec072eb7c065f07f66eca26184362db9b7685ab474cf5", "status": "0x1", "blockNumber": "0x5"}
+EXIT_CODE=0
+$ cast call 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 navPerShare()(uint256) --rpc-url http://127.0.0.1:18546
+125000000 [1.25e8]
+EXIT_CODE=0
+$ cast call 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 balanceOf(address)(uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url http://127.0.0.1:18546
+1000000000000000000000 [1e21]
+EXIT_CODE=0
+$ cast call 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 totalClaimValue()(uint256) --rpc-url http://127.0.0.1:18546
+1250000000 [1.25e9]
+EXIT_CODE=0
+$ cast send 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 approve(address,uint256) 0x0165878A594ca255338adfa4d48449f69242Eb8F 1000000000000000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0xf5eb781877febad88cf6d70ae29477c9cf90f533f4bb45dd705e103743dd206b", "status": "0x1", "blockNumber": "0x6"}
+EXIT_CODE=0
+$ cast send 0x0165878A594ca255338adfa4d48449f69242Eb8F enqueue(uint256) 1000000000000000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0x32538b13991935effdfe00ef9f591c2536ff7b0af9fdd2e0523983b92e169610", "status": "0x1", "blockNumber": "0x7"}
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F pendingShares()(uint256) --rpc-url http://127.0.0.1:18546
+1000000000000000000 [1e18]
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F pendingAssets()(uint256) --rpc-url http://127.0.0.1:18546
+1250000 [1.25e6]
+EXIT_CODE=0
+$ cast send 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 attest(int256) 150000000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0xa9b506c9e5534a8ad3472dc647dfbecdb7b3d832851ceb4ebc6bee80204ec656", "status": "0x1", "blockNumber": "0x8"}
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F pendingAssets()(uint256) --rpc-url http://127.0.0.1:18546
+1250000 [1.25e6]
+EXIT_CODE=0
+$ cast send 0x0165878A594ca255338adfa4d48449f69242Eb8F settle(uint256) 1250000 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0xb269e81fd7976668f07dcc5f2f9de5c748d1e83e6d8b63023bf07fe95c094d6a", "status": "0x1", "blockNumber": "0x9"}
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F claimable(address)(uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url http://127.0.0.1:18546
+1250000 [1.25e6]
+EXIT_CODE=0
+$ cast call 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 balanceOf(address)(uint256) 0x0165878A594ca255338adfa4d48449f69242Eb8F --rpc-url http://127.0.0.1:18546
+0
+EXIT_CODE=0
+$ cast send 0x0165878A594ca255338adfa4d48449f69242Eb8F claim() --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url http://127.0.0.1:18546 --json
+{"transactionHash": "0x457af1befb588f36eb26f81b43f79624f4bb9cc822d27a346ad54a2630ac1631", "status": "0x1", "blockNumber": "0xa"}
+EXIT_CODE=0
+$ cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 balanceOf(address)(uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url http://127.0.0.1:18546
+1250000 [1.25e6]
+EXIT_CODE=0
+$ cast call 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 balanceOf(address)(uint256) 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url http://127.0.0.1:18546
+999000000000000000000 [9.99e20]
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F pendingShares()(uint256) --rpc-url http://127.0.0.1:18546
+0
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F pendingAssets()(uint256) --rpc-url http://127.0.0.1:18546
+0
+EXIT_CODE=0
+$ cast call 0x0165878A594ca255338adfa4d48449f69242Eb8F totalClaimable()(uint256) --rpc-url http://127.0.0.1:18546
+0
+EXIT_CODE=0
+$ cast call 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 reserveBalance()(uint256) --rpc-url http://127.0.0.1:18546
+998750000 [9.987e8]
+EXIT_CODE=0
+PASS Ex1: funded, subscribed, moved NAV, enqueued, settled, and claimed on local Anvil.

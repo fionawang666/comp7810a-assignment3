@@ -1,0 +1,269 @@
+COMP7810A Assignment Three — actual check output
+2026-10-18T16:08:38.284344+00:00
+Source snapshot SHA-256: 4b700ca3cd251c2dcc0b4c41b5495f60c5300d2255087c0c9ac750ba7d7398c7
+forge Version: 1.8.3
+Commit SHA: cae51ad458f6abb64852b7709eb784352429825d
+Build Timestamp: 2026-09-15T10:46:16.519267388Z (1789469176)
+Build Profile: dist
+[version exit=0]
+cast Version: 1.8.3
+Commit SHA: cae51ad458f6abb64852b7709eb784352429825d
+Build Timestamp: 2026-09-15T10:46:16.519267388Z (1789469176)
+Build Profile: dist
+[version exit=0]
+anvil Version: 1.8.3
+Commit SHA: cae51ad458f6abb64852b7709eb784352429825d
+Build Timestamp: 2026-09-15T10:46:16.519267388Z (1789469176)
+Build Profile: dist
+[version exit=0]
+
+========================================================================
+$ make doctor
+bash scripts/doctor.sh
+RWA tokenization lab · environment self-check
+
+  [32m✓[0m forge  /workspace/toolchains/foundry-v1.8.3/forge
+  [32m✓[0m cast  /workspace/toolchains/foundry-v1.8.3/cast
+  [32m✓[0m anvil  /workspace/toolchains/foundry-v1.8.3/anvil
+
+  [32m✓[0m lib/forge-std is in place
+  [32m✓[0m lib/openzeppelin-contracts is in place
+
+  compiling and running the core tests, about 30 seconds ...
+  [32m✓[0m make test passed (7 tests passed)
+
+----------------------------------------
+6 passed, 0 failed
+ready for class.
+
+[exit=0] make doctor
+
+========================================================================
+$ make test
+forge test --match-path 'test/TBill.t.sol' -vv
+No files changed, compilation skipped
+
+Ran 7 tests for test/TBill.t.sol:TBillTest
+[PASS] testFuzz_Subscribe_ClaimValueMatchesPayment(uint96) (runs: 256, μ: 262401, ~: 262390)
+[PASS] test_Attest_RevertsForNonReporter() (gas: 42588)
+[PASS] test_Compliance_BlocksNonWhitelistedHolder() (gas: 212670)
+[PASS] test_Invest_MovesCashToTheCustodian() (gas: 348320)
+[PASS] test_NavRise_LiftsClaimValueNotBalance() (gas: 306514)
+[PASS] test_Subscribe_AtHigherNav_MintsFewerShares() (gas: 290200)
+[PASS] test_Subscribe_MintsSharesAtPar() (gas: 282325)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 14.77ms (14.20ms CPU time)
+
+Ran 1 test suite in 15.87ms (14.77ms CPU time): 7 tests passed, 0 failed, 0 skipped (7 total tests)
+
+[exit=0] make test
+
+========================================================================
+$ make exercise
+forge test --match-path 'test/exercises/*.t.sol' -vv
+No files changed, compilation skipped
+
+Ran 7 tests for test/exercises/01_BridgeTasks.t.sol:BridgeTasksTest
+[PASS] test_Ex2_RealHoldingsIsJustANumber() (gas: 74959)
+[PASS] test_Ex2_SharesExistWhileTheCustodianHoldsNothing() (gas: 272322)
+[PASS] test_Ex3_OneCallMovesTheWholeBook() (gas: 550895)
+[PASS] test_Ex3_TheClaimFloats_TheShareCountDoesNot() (gas: 334379)
+[PASS] test_Ex4_FreezeBeatsConfiscation() (gas: 352791)
+[PASS] test_Ex4_NoKyc_NoShares_EvenIfYouPay() (gas: 220312)
+[PASS] test_Ex4_TransferChecksBothEndpoints() (gas: 293070)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 1.86ms (846.37µs CPU time)
+
+Ran 11 tests for test/exercises/02_QueueTasks.t.sol:QueueTasksTest
+[PASS] test_Ex5_1_AssetsAtNav_AtHigherNav() (gas: 11485)
+[PASS] test_Ex5_1_AssetsAtNav_AtPar() (gas: 5804)
+[PASS] test_Ex5_2_Enqueue_EscrowsSharesAndLocksNav() (gas: 560980)
+[PASS] test_Ex5_2_Enqueue_LocksTheRate() (gas: 577245)
+[PASS] test_Ex5_3_Settle_NeedsTheVaultToHoldCash() (gas: 1101713)
+[PASS] test_Ex5_3_Settle_PartialFillCarriesTheRemainder() (gas: 1140255)
+[PASS] test_Ex5_3_Settle_PaysTheWholeQueue() (gas: 1177787)
+[PASS] test_Ex5_3_Settle_StopsWhenItCannotCoverTheHead() (gas: 565195)
+[PASS] test_Ex5_4_Claim_CannotBeDrawnTwice() (gas: 770880)
+[PASS] test_Ex5_4_Claim_PaysOutAndZeroesTheBalance() (gas: 792176)
+[PASS] test_Ex5_4_Claim_RevertsWithNothingToClaim() (gas: 34098)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 5.77ms (4.10ms CPU time)
+
+Ran 2 tests for test/exercises/03_InvariantTasks.t.sol:InvariantTasksTest
+[PASS]
+InvariantTasksTest invariants:
+[PASS] invariant_EscrowConservation
+[PASS] invariant_SettlementSolvency
+ InvariantTasksTest invariants (runs: 256, calls: 128000, reverts: 0)
+
+╭---------------+-----------+-------+---------+----------╮
+| Contract      | Selector  | Calls | Reverts | Discards |
++========================================================+
+| BridgeHandler | attest    | 21317 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | claim     | 21368 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | enqueue   | 21521 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | fundVault | 21219 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | settle    | 21341 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | subscribe | 21234 | 0       | 0        |
+╰---------------+-----------+-------+---------+----------╯
+
+[PASS] test_Ex6_HandlerMakesProgressThroughTPlusOne() (gas: 1487231)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 18.05s (18.05s CPU time)
+
+Ran 3 test suites in 18.05s (18.05s CPU time): 20 tests passed, 0 failed, 0 skipped (20 total tests)
+
+[exit=0] make exercise
+
+========================================================================
+$ make challenge
+forge test --match-path 'test/challenges/FalseNav.t.sol' -vv
+No files changed, compilation skipped
+
+Ran 2 tests for test/challenges/FalseNav.t.sol:FalseNavChallenge
+[PASS] test_assertInitialState() (gas: 75541)
+[PASS] test_falseNav() (gas: 751711)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.60ms (614.80µs CPU time)
+
+Ran 1 test suite in 7.48ms (2.60ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)
+
+[exit=0] make challenge
+
+========================================================================
+$ forge test --match-path 'test/tier3/*.t.sol' -vv
+No files changed, compilation skipped
+
+Ran 17 tests for test/tier3/OptionalExtensions.t.sol:OptionalExtensionsTest
+[PASS] testFuzz_Tier3_LowerPrecisionNavNormalizes(uint64) (runs: 256, μ: 680680, ~: 680677)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesInvalidDataForReaderToReject() (gas: 998181)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesRoundMetadata() (gas: 573478)
+[PASS] test_Tier3_ChainlinkAdapter_RejectsZeroSource() (gas: 101859)
+[PASS] test_Tier3_FreshNav_Normalizes18DecimalsToEight() (gas: 680314)
+[PASS] test_Tier3_IncompleteRoundAndNonPositiveNavRejected() (gas: 761344)
+[PASS] test_Tier3_InvalidReaderConfigurationRejected() (gas: 900717)
+[PASS] test_Tier3_NavAcceptedAtExactMaxAge() (gas: 680458)
+[PASS] test_Tier3_NegativeAndRoundedToZeroNavRejected() (gas: 781649)
+[PASS] test_Tier3_PolicyAndIssuanceRequireAuthorizedRoles() (gas: 1626060)
+[PASS] test_Tier3_RestrictedSecurityToken_ComplianceAndFreeze() (gas: 1865550)
+[PASS] test_Tier3_RestrictedTransferFromAndBurnApplyEligibility() (gas: 2057024)
+[PASS] test_Tier3_StaleNavRejected() (gas: 681061)
+[PASS] test_Tier3_StalePriceActuallyBlocksSubscriptions() (gas: 3633091)
+[PASS] test_Tier3_SubscriptionRejectionRollsBackCashAndAllowance() (gas: 3481891)
+[PASS] test_Tier3_ZeroAndDustSubscriptionsRejectedBeforeCashTransfer() (gas: 3259747)
+[PASS] test_Tier3_ZeroAndFutureTimestampsRejected() (gas: 776827)
+Suite result: ok. 17 passed; 0 failed; 0 skipped; finished in 17.55ms (24.19ms CPU time)
+
+Ran 1 test suite in 18.61ms (17.55ms CPU time): 17 tests passed, 0 failed, 0 skipped (17 total tests)
+
+[exit=0] forge test --match-path 'test/tier3/*.t.sol' -vv
+
+========================================================================
+$ forge test
+No files changed, compilation skipped
+
+Ran 7 tests for test/exercises/01_BridgeTasks.t.sol:BridgeTasksTest
+[PASS] test_Ex2_RealHoldingsIsJustANumber() (gas: 74959)
+[PASS] test_Ex2_SharesExistWhileTheCustodianHoldsNothing() (gas: 272322)
+[PASS] test_Ex3_OneCallMovesTheWholeBook() (gas: 550895)
+[PASS] test_Ex3_TheClaimFloats_TheShareCountDoesNot() (gas: 334379)
+[PASS] test_Ex4_FreezeBeatsConfiscation() (gas: 352791)
+[PASS] test_Ex4_NoKyc_NoShares_EvenIfYouPay() (gas: 220312)
+[PASS] test_Ex4_TransferChecksBothEndpoints() (gas: 293070)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 2.52ms (1.02ms CPU time)
+
+Ran 2 tests for test/challenges/FalseNav.t.sol:FalseNavChallenge
+[PASS] test_assertInitialState() (gas: 75541)
+[PASS] test_falseNav() (gas: 751711)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.42ms (622.92µs CPU time)
+
+Ran 11 tests for test/exercises/02_QueueTasks.t.sol:QueueTasksTest
+[PASS] test_Ex5_1_AssetsAtNav_AtHigherNav() (gas: 11485)
+[PASS] test_Ex5_1_AssetsAtNav_AtPar() (gas: 5804)
+[PASS] test_Ex5_2_Enqueue_EscrowsSharesAndLocksNav() (gas: 560980)
+[PASS] test_Ex5_2_Enqueue_LocksTheRate() (gas: 577245)
+[PASS] test_Ex5_3_Settle_NeedsTheVaultToHoldCash() (gas: 1101713)
+[PASS] test_Ex5_3_Settle_PartialFillCarriesTheRemainder() (gas: 1140255)
+[PASS] test_Ex5_3_Settle_PaysTheWholeQueue() (gas: 1177787)
+[PASS] test_Ex5_3_Settle_StopsWhenItCannotCoverTheHead() (gas: 565195)
+[PASS] test_Ex5_4_Claim_CannotBeDrawnTwice() (gas: 770880)
+[PASS] test_Ex5_4_Claim_PaysOutAndZeroesTheBalance() (gas: 792176)
+[PASS] test_Ex5_4_Claim_RevertsWithNothingToClaim() (gas: 34098)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 2.74ms (1.93ms CPU time)
+
+Ran 17 tests for test/tier3/OptionalExtensions.t.sol:OptionalExtensionsTest
+[PASS] testFuzz_Tier3_LowerPrecisionNavNormalizes(uint64) (runs: 256, μ: 680678, ~: 680665)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesInvalidDataForReaderToReject() (gas: 998181)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesRoundMetadata() (gas: 573478)
+[PASS] test_Tier3_ChainlinkAdapter_RejectsZeroSource() (gas: 101859)
+[PASS] test_Tier3_FreshNav_Normalizes18DecimalsToEight() (gas: 680314)
+[PASS] test_Tier3_IncompleteRoundAndNonPositiveNavRejected() (gas: 761344)
+[PASS] test_Tier3_InvalidReaderConfigurationRejected() (gas: 900717)
+[PASS] test_Tier3_NavAcceptedAtExactMaxAge() (gas: 680458)
+[PASS] test_Tier3_NegativeAndRoundedToZeroNavRejected() (gas: 781649)
+[PASS] test_Tier3_PolicyAndIssuanceRequireAuthorizedRoles() (gas: 1626060)
+[PASS] test_Tier3_RestrictedSecurityToken_ComplianceAndFreeze() (gas: 1865550)
+[PASS] test_Tier3_RestrictedTransferFromAndBurnApplyEligibility() (gas: 2057024)
+[PASS] test_Tier3_StaleNavRejected() (gas: 681061)
+[PASS] test_Tier3_StalePriceActuallyBlocksSubscriptions() (gas: 3633091)
+[PASS] test_Tier3_SubscriptionRejectionRollsBackCashAndAllowance() (gas: 3481891)
+[PASS] test_Tier3_ZeroAndDustSubscriptionsRejectedBeforeCashTransfer() (gas: 3259747)
+[PASS] test_Tier3_ZeroAndFutureTimestampsRejected() (gas: 776827)
+Suite result: ok. 17 passed; 0 failed; 0 skipped; finished in 20.07ms (19.47ms CPU time)
+
+Ran 3 tests for test/regression/RedemptionQueueRegression.t.sol:RedemptionQueueRegressionTest
+[PASS] test_FailedEscrowTransferCreatesNoTicketOrLiability() (gas: 322535)
+[PASS] test_FifoDoesNotSkipAnUnaffordableHeadForASmallerTicket() (gas: 1023068)
+[PASS] test_InsufficientReservesRollBackTheWholeBatch() (gas: 1384815)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 1.83ms (928.83µs CPU time)
+
+Ran 7 tests for test/TBill.t.sol:TBillTest
+[PASS] testFuzz_Subscribe_ClaimValueMatchesPayment(uint96) (runs: 256, μ: 262403, ~: 262426)
+[PASS] test_Attest_RevertsForNonReporter() (gas: 42588)
+[PASS] test_Compliance_BlocksNonWhitelistedHolder() (gas: 212670)
+[PASS] test_Invest_MovesCashToTheCustodian() (gas: 348320)
+[PASS] test_NavRise_LiftsClaimValueNotBalance() (gas: 306514)
+[PASS] test_Subscribe_AtHigherNav_MintsFewerShares() (gas: 290200)
+[PASS] test_Subscribe_MintsSharesAtPar() (gas: 282325)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 23.61ms (23.00ms CPU time)
+
+Ran 1 test for test/deployment/DeploymentWiring.t.sol:DeploymentWiringTest
+[PASS] test_Deployment_WiresRolesAndCompletesRedemption() (gas: 10931628)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.48ms (1.14ms CPU time)
+
+Ran 2 tests for test/exercises/03_InvariantTasks.t.sol:InvariantTasksTest
+[PASS]
+InvariantTasksTest invariants:
+[PASS] invariant_EscrowConservation
+[PASS] invariant_SettlementSolvency
+ InvariantTasksTest invariants (runs: 256, calls: 128000, reverts: 0)
+
+╭---------------+-----------+-------+---------+----------╮
+| Contract      | Selector  | Calls | Reverts | Discards |
++========================================================+
+| BridgeHandler | attest    | 21296 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | claim     | 21392 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | enqueue   | 21459 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | fundVault | 21233 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | settle    | 21202 | 0       | 0        |
+|---------------+-----------+-------+---------+----------|
+| BridgeHandler | subscribe | 21418 | 0       | 0        |
+╰---------------+-----------+-------+---------+----------╯
+
+[PASS] test_Ex6_HandlerMakesProgressThroughTPlusOne() (gas: 1487231)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 18.29s (18.29s CPU time)
+
+Ran 8 test suites in 18.30s (18.34s CPU time): 50 tests passed, 0 failed, 0 skipped (50 total tests)
+
+[exit=0] forge test
+
+========================================================================
+$ forge fmt --check
+
+[exit=0] forge fmt --check
+
+RESULT: ALL CHECKS PASSED

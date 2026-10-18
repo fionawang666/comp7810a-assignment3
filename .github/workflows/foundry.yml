@@ -1,0 +1,29 @@
+name: Foundry checks
+on:
+  pull_request:
+  push:
+    branches: [main, 'codex/**']
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.8.3
+      - name: Static project checks
+        run: |
+          python3 scripts/preflight-project.py
+          python3 scripts/harden-demo-keys.py
+      - name: Run all seven required checks and save actual outputs
+        run: python3 scripts/capture-checks.py
+      - name: Preserve check evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: foundry-check-evidence
+          path: |
+            docs/submission-checks.txt
+            docs/submission-checks.json

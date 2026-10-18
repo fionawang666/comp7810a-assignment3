@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1320" role="img" aria-labelledby="title desc">
+<title id="title">Tokenized T-Bill architecture: four bridge planks and seven base contracts</title>
+<desc id="desc">An on-chain diagram shows MockUSDC, ComplianceRegistry, MockPriceFeed, MockTBillCustodian, TBillToken, TBillVault and RedemptionQueue. An eligible investor subscribes with six-decimal USDC and receives eighteen-decimal shares. Enqueue escrows shares and locks eight-decimal NAV in a FIFO ticket. Settlement transfers vault USDC to the queue and burns escrow; claim pays the investor. Off-chain securities, legal rights and sale proceeds depend on an SPV, custodian and authorized actors; their on-chain numbers do not prove actual custody. No deployment status is asserted.</desc>
+<defs>
+ <marker id="cash" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#087d68"/></marker>
+ <marker id="shares" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2960a0"/></marker>
+ <marker id="data" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ae5d1c"/></marker>
+ <marker id="policy" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#7a4da2"/></marker>
+ <marker id="call" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#65767d"/></marker>
+ <style>
+ text{font-family:Arial,Helvetica,sans-serif;fill:#203139}
+ .title{font-size:36px;font-weight:700;fill:#173e3b}.subtitle{font-size:19px;fill:#546a6e}
+ .plank{font-size:22px;font-weight:700}.pdesc{font-size:17px;fill:#53676e}
+ .band{font-size:19px;font-weight:700;letter-spacing:1px}.box-title{font-size:22px;font-weight:700}
+ .detail{font-size:17px;fill:#4a626a}.label{font-size:18px;font-weight:700}
+ .small{font-size:16px;fill:#4e656d}.note{font-size:18px;fill:#405a62}
+ .cash{fill:none;stroke:#087d68;stroke-width:3.4;marker-end:url(#cash)}
+ .shares{fill:none;stroke:#2960a0;stroke-width:3.4;marker-end:url(#shares)}
+ .data{fill:none;stroke:#ae5d1c;stroke-width:2.8;stroke-dasharray:9 5;marker-end:url(#data)}
+ .policy{fill:none;stroke:#7a4da2;stroke-width:2.8;stroke-dasharray:5 5;marker-end:url(#policy)}
+ .call{fill:none;stroke:#65767d;stroke-width:2.4;stroke-dasharray:3 5;marker-end:url(#call)}
+ .contract{fill:#fff;stroke:#a6bab9;stroke-width:2}.actor{fill:#edf4f2;stroke:#91aba5;stroke-width:2}
+ </style>
+</defs>
+<rect width="1800" height="1320" fill="#fbfaf7"/>
+<text x="42" y="60" class="title">Tokenized T-Bills: the bridge from cash to a legal claim</text>
+<text x="42" y="95" class="subtitle">COMP7810A · Assignment 3 | Seven base contracts and their trust boundaries · This diagram does not assert a live deployment</text>
+
+<rect x="42" y="125" width="417" height="123" rx="12" fill="#e3f0eb" stroke="#a8c4b9"/>
+<text x="61" y="160" class="plank">(a) CUSTODY</text>
+<text x="61" y="190" class="pdesc">The SPV legally holds real Treasuries.</text><text x="61" y="216" class="pdesc">A mock contract reports holdings; no proof.</text>
+<rect x="475" y="125" width="417" height="123" rx="12" fill="#faecd9" stroke="#ddb98e"/>
+<text x="494" y="160" class="plank">(b) ATTESTATION</text>
+<text x="494" y="190" class="pdesc">A reporter publishes NAV per share (8dp).</text><text x="494" y="216" class="pdesc">Pricing trusts that reported number.</text>
+<rect x="908" y="125" width="417" height="123" rx="12" fill="#e5ecf7" stroke="#adc0d9"/>
+<text x="927" y="160" class="plank">(c) PHYSICAL REDEMPTION</text>
+<text x="927" y="190" class="pdesc">Shares enter FIFO tickets at locked NAV.</text><text x="927" y="216" class="pdesc">Sell assets → refill cash → settle → claim.</text>
+<rect x="1341" y="125" width="417" height="123" rx="12" fill="#f0e8f6" stroke="#ccb1de"/>
+<text x="1360" y="160" class="plank">(d) ADMISSION / PERMISSIONING</text>
+<text x="1360" y="190" class="pdesc">Every nonzero share endpoint needs KYC.</text><text x="1360" y="216" class="pdesc">Mint, transfer and burn also obey pause.</text>
+
+<text x="42" y="292" class="band">ON-CHAIN ACCOUNTING — SEVEN BASE CONTRACTS + INVESTOR</text>
+<rect x="42" y="310" width="1280" height="665" rx="16" fill="#f0f6f5" stroke="#c7d8d2"/>
+<text x="1350" y="292" class="band">OFF-CHAIN LEGAL / OPERATING ROLES</text>
+<rect x="1342" y="310" width="416" height="665" rx="16" fill="#fff3e1" stroke="#e0c49f"/>
+
+<!-- Seven contract boxes. MockUSDC records the balances used by every green flow. -->
+<rect x="70" y="350" width="250" height="125" rx="12" class="contract"/>
+<text x="90" y="386" class="box-title">1 · MockUSDC</text><text x="90" y="416" class="detail">6dp cash token / faucet</text><text x="90" y="443" class="detail">balances at wallets, vault,</text><text x="90" y="466" class="detail">custodian proxy and queue</text>
+<rect x="350" y="350" width="295" height="125" rx="12" class="contract"/>
+<text x="368" y="386" class="box-title">2 · ComplianceRegistry</text><text x="368" y="416" class="detail">isWhitelisted(account)</text><text x="368" y="443" class="detail">KYC eligibility gate for token</text><text x="368" y="466" class="detail">nonzero endpoints</text>
+<rect x="680" y="350" width="295" height="125" rx="12" class="contract"/>
+<text x="698" y="386" class="box-title">3 · MockPriceFeed</text><text x="698" y="416" class="detail">NAV per share, 8dp</text><text x="698" y="443" class="detail">setPrice() is unrestricted</text><text x="698" y="466" class="detail">in this teaching mock</text>
+<rect x="1010" y="350" width="285" height="125" rx="12" class="contract"/>
+<text x="1027" y="386" class="box-title">4 · MockTBillCustodian</text><text x="1027" y="416" class="detail">treasury / realHoldings(), 6dp</text><text x="1027" y="443" class="detail">recordPurchase() / recordSale()</text><text x="1027" y="466" class="detail">on-chain custody proxy only</text>
+
+<rect x="70" y="600" width="250" height="125" rx="12" class="actor"/>
+<text x="90" y="637" class="box-title">Eligible investor</text><text x="90" y="668" class="detail">approves vault / queue</text><text x="90" y="695" class="detail">2. receives minted shares</text>
+<rect x="350" y="600" width="295" height="125" rx="12" class="contract"/>
+<text x="370" y="637" class="box-title">5 · TBillToken</text><text x="370" y="668" class="detail">18dp fund share / legal claim</text><text x="370" y="695" class="detail">mint, transfer, burn; pause</text>
+<rect x="680" y="600" width="295" height="125" rx="12" class="contract"/>
+<text x="700" y="637" class="box-title">6 · TBillVault</text><text x="700" y="668" class="detail">subscribe() / reserveBalance()</text><text x="700" y="695" class="detail">invest() / depositReserves()</text>
+<rect x="1010" y="600" width="285" height="125" rx="12" class="contract"/>
+<text x="1028" y="637" class="box-title">7 · RedemptionQueue</text><text x="1028" y="668" class="detail">ticket id + locked cash amount</text><text x="1028" y="695" class="detail">FIFO / claimable[owner]</text>
+
+<!-- NAV control and policy. -->
+<path d="M498 476 L498 598" class="policy"/><text x="508" y="565" class="small">KYC gate</text>
+<path d="M710 476 L710 598" class="data"/><text x="719" y="553" class="small">read NAV</text>
+<path d="M900 598 L900 476" class="data"/><text x="911" y="545" class="small">attest()</text><text x="911" y="566" class="small">→ setPrice()</text>
+
+<!-- Investor and inter-contract flows. -->
+<path d="M194 600 L194 505 L795 505 L795 598" class="cash"/>
+<text x="270" y="496" class="label" fill="#087d68">1. subscribe: USDC to vault</text>
+<path d="M679 625 L647 625" class="call"/><text x="650" y="611" class="small">mint</text>
+<path d="M350 675 L322 675" class="shares"/>
+
+<path d="M975 642 L1008 642" class="cash"/>
+<text x="744" y="755" class="label" fill="#087d68">4. settle: vault cash → queue</text>
+<path d="M974 610 L990 610 L990 515 L1153 515 L1153 477" class="cash"/>
+<text x="1020" y="506" class="small">invest USDC; record purchase</text>
+<path d="M1153 726 L1153 789 L498 789 L498 727" class="shares"/>
+<text x="686" y="780" class="label" fill="#2960a0">4. burn escrow on full settlement</text>
+<path d="M194 726 L194 831 L1210 831 L1210 727" class="shares"/>
+<text x="270" y="858" class="label" fill="#2960a0">3. enqueue: transfer shares to queue; store ticket id, owner, shares and NAV-locked assets</text>
+<path d="M1260 726 L1260 900 L120 900 L120 727" class="cash"/>
+<text x="350" y="931" class="label" fill="#087d68">5. claim: queue pays settled USDC; claimable is cleared before transfer</text>
+
+<!-- Off-chain explanations do not imply automatic legal enforcement or custody proof. -->
+<rect x="1362" y="350" width="376" height="157" rx="12" fill="#fff" stroke="#dcc09a"/>
+<text x="1383" y="386" class="box-title">SPV + real custodian</text><text x="1383" y="417" class="detail">Legally hold / buy / sell Treasuries.</text><text x="1383" y="444" class="detail">Investor rights come from legal terms.</text><text x="1383" y="471" class="detail">No securities are held by this EVM.</text>
+<path d="M1362 401 L1297 401" class="data"/>
+<text x="1383" y="535" class="small">← permissioned custody reporting only</text>
+<text x="1383" y="582" class="box-title">Authorized actors</text>
+<text x="1383" y="616" class="detail">Reporter: vault.attest(nav).</text><text x="1383" y="643" class="detail">Operator: invest / depositReserves.</text><text x="1383" y="670" class="detail">Settler: queue.settle(cashBudget).</text><text x="1383" y="697" class="detail">Admin: configure roles and KYC.</text>
+<line x1="1383" y1="726" x2="1719" y2="726" stroke="#dac3a5"/>
+<text x="1383" y="764" class="box-title">T+1: operating assumption</text>
+<text x="1383" y="797" class="detail">Asset sale proceeds must become</text><text x="1383" y="824" class="detail">operator-wallet USDC, then refill the</text><text x="1383" y="851" class="detail">vault via depositReserves(assets).</text><text x="1383" y="888" class="detail">The lab enforces no one-day delay.</text><text x="1383" y="915" class="detail">Cash availability + settler determine</text><text x="1383" y="942" class="detail">when tickets settle in full.</text>
+
+<!-- Accounting and limitations. -->
+<rect x="42" y="1002" width="1716" height="171" rx="12" fill="#e8efed"/>
+<text x="64" y="1036" class="box-title">What the chain can check</text>
+<text x="64" y="1070" class="note">Queue escrow balance = pendingShares under the tested enqueue / settle flow; queue USDC ≥ totalClaimable.</text>
+<text x="64" y="1100" class="note">Tickets are queue records, not transferable tokens. Each ticket locks floor(shares × NAV / 10²⁰) in USDC units; settlement is FIFO and all-or-nothing.</text>
+<text x="64" y="1130" class="note">Token balances track share quantities. NAV changes their reported value without changing those balances.</text>
+<text x="64" y="1159" class="note">Custody reports and NAV attestations do not independently prove that the SPV owns enough assets or that a legal claim will be honored.</text>
+
+<path d="M64 1210 L113 1210" class="cash"/><text x="126" y="1216" class="small">USDC transfer (6dp)</text>
+<path d="M370 1210 L419 1210" class="shares"/><text x="432" y="1216" class="small">tBILL shares (18dp)</text>
+<path d="M680 1210 L729 1210" class="data"/><text x="742" y="1216" class="small">reported NAV / custody data</text>
+<path d="M1090 1210 L1139 1210" class="policy"/><text x="1152" y="1216" class="small">permission check</text>
+<path d="M1420 1210 L1469 1210" class="call"/><text x="1482" y="1216" class="small">contract call</text>
+<text x="42" y="1273" class="small">Scope: the seven base contracts required by the assignment. Optional local extension contracts are not shown. Review source and deployment evidence separately.</text>
+</svg>

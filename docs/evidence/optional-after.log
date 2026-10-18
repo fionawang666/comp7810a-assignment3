@@ -1,0 +1,25 @@
+Compiling 6 files with Solc 0.8.24
+Solc 0.8.24 finished in 1.67s
+Compiler run successful!
+
+Ran 17 tests for test/tier3/OptionalExtensions.t.sol:OptionalExtensionsTest
+[PASS] testFuzz_Tier3_LowerPrecisionNavNormalizes(uint64) (runs: 256, μ: 680682, ~: 680665)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesInvalidDataForReaderToReject() (gas: 998181)
+[PASS] test_Tier3_ChainlinkAdapter_PreservesRoundMetadata() (gas: 573478)
+[PASS] test_Tier3_ChainlinkAdapter_RejectsZeroSource() (gas: 101859)
+[PASS] test_Tier3_FreshNav_Normalizes18DecimalsToEight() (gas: 680314)
+[PASS] test_Tier3_IncompleteRoundAndNonPositiveNavRejected() (gas: 761344)
+[PASS] test_Tier3_InvalidReaderConfigurationRejected() (gas: 900717)
+[PASS] test_Tier3_NavAcceptedAtExactMaxAge() (gas: 680458)
+[PASS] test_Tier3_NegativeAndRoundedToZeroNavRejected() (gas: 781649)
+[PASS] test_Tier3_PolicyAndIssuanceRequireAuthorizedRoles() (gas: 1626060)
+[PASS] test_Tier3_RestrictedSecurityToken_ComplianceAndFreeze() (gas: 1865550)
+[PASS] test_Tier3_RestrictedTransferFromAndBurnApplyEligibility() (gas: 2057024)
+[PASS] test_Tier3_StaleNavRejected() (gas: 681061)
+[PASS] test_Tier3_StalePriceActuallyBlocksSubscriptions() (gas: 3633091)
+[PASS] test_Tier3_SubscriptionRejectionRollsBackCashAndAllowance() (gas: 3481891)
+[PASS] test_Tier3_ZeroAndDustSubscriptionsRejectedBeforeCashTransfer() (gas: 3259747)
+[PASS] test_Tier3_ZeroAndFutureTimestampsRejected() (gas: 776827)
+Suite result: ok. 17 passed; 0 failed; 0 skipped; finished in 16.48ms (18.94ms CPU time)
+
+Ran 1 test suite in 20.84ms (16.48ms CPU time): 17 tests passed, 0 failed, 0 skipped (17 total tests)
