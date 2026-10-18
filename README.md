@@ -9,8 +9,8 @@ physical redemption and admission are separate trust boundaries.
 The implementation includes Ex0–Ex6, the optional Ex7 exploit, A–E discussion,
 and three separately tested local extensions. All seven base contracts have
 been deployed to Ethereum Sepolia and have Etherscan source-code verification
-records, as confirmed by the student. The authentic verification screenshots
-still need to be added to the repository before final submission review.
+records, as confirmed by the student. All seven authentic verification
+screenshots are included in `docs/evidence/` and linked in the evidence index.
 
 ## Rubric and deadline
 
@@ -31,8 +31,6 @@ Use Foundry **v1.8.3** and Solidity **0.8.24**, as in `.devcontainer/`.
 ```bash
 git clone https://github.com/fionawang666/comp7810a-assignment3.git
 cd comp7810a-assignment3
-# Use the documentation review branch until its pull request is merged:
-git switch codex/finalize-sepolia-documentation
 make doctor
 make test
 make exercise
@@ -131,16 +129,15 @@ Anvil's account-secret display. Obtain public account addresses using
 | RedemptionQueue | `0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406` | [Verified source code](https://sepolia.etherscan.io/address/0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406#code) |
 
 The deployment and validation results above were supplied and confirmed by the
-student for this documentation update. Some contracts display **Similar Match**.
-This designation is preserved as reported; source-code verification is not
-represented as Exact Match for every contract. Individual match classifications
-should be recorded from each actual Etherscan Code page and its corresponding
-screenshot rather than inferred from another contract's status.
+student. Inspection of the original screenshots shows **Similar Match** for
+MockUSDC, ComplianceRegistry, MockPriceFeed, TBillToken, MockTBillCustodian and
+TBillVault, and **Exact Match** for RedemptionQueue. These classifications
+transcribe the visible screenshot labels rather than infer a uniform status.
 
-The student has saved seven authentic Etherscan screenshots. None is currently
-present in `docs/evidence/`. The [evidence index](docs/evidence/README.md) records
-this outstanding upload and will link the original files once they are present.
-No screenshot has been generated, altered or substituted.
+All seven original Etherscan screenshots were committed in `bdc8dc1`. Each link
+in the [evidence index](docs/evidence/README.md) resolves to an existing PNG;
+the displayed contract addresses match the deployment table above.
+The original screenshot files are unchanged by this documentation review.
 
 [docs/deployment-sepolia.md](docs/deployment-sepolia.md) records the completed
 deployment and retains the earlier simulation, deployment and source-verification
@@ -194,11 +191,11 @@ The exact results of the checks requested for this update are recorded in
 [the completion report](docs/completion-report.md) and the
 [evidence index](docs/evidence/README.md).
 
-An automated audit result does not establish that screenshots are present or
-independently prove the explorer's verification status. The seven authentic
-screenshots remain an outstanding evidence upload even if the audit passes.
-After adding them, link their actual filenames, retain each displayed match
-classification, and review the complete submission against the assignment PDF.
+The seven authentic screenshots have been checked directly for file presence,
+contract address and the visible match classification. The automated audit
+alone does not perform those image checks or establish a current live explorer
+status. Review the indexed evidence and the complete submission against the
+assignment PDF before packaging.
 
 The package retains `lib/` and excludes Git history, build caches, broadcast
 files, `.env*`, wallet or keystore files, credentials and other archives. No final

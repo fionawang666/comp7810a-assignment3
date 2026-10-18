@@ -1,6 +1,6 @@
 # Assignment Three completion and verification report
 
-Documentation review branch: `codex/finalize-sepolia-documentation` in
+Documentation review branch: `codex/final-screenshot-consistency` in
 `fionawang666/comp7810a-assignment3`. Implementation
 [PR #1](https://github.com/fionawang666/comp7810a-assignment3/pull/1) was merged
 by the student at **2026-10-18 16:22:35 UTC**. This documentation update is a
@@ -8,9 +8,9 @@ separate review from that completed implementation merge.
 Evidence files record their actual UTC timestamps. The client timezone is
 Asia/Shanghai. The student has
 confirmed completion of the seven Sepolia deployments and Etherscan source
-verification. **Moodle submission is not complete**: authentic screenshot
-evidence still needs to be included and reviewed, and the final submission
-package must be checked and uploaded.
+verification. All seven original screenshot files are now included and have
+been inspected. **Moodle submission is not complete**: the final submission
+package must still be checked and uploaded by the student.
 
 ## Result and two original failures
 
@@ -47,7 +47,7 @@ check or lecturer assertion was removed. Raw before/after logs are in
 | A–D | Original lecturer questions preserved verbatim; eight answers are 217, 230, 243, 236, 228, 246, 249 and 241 words. All within 150–300. |
 | E | Seven real, distinct Ex2–Ex4 function names checked against source; additional exploit explains assumptions and mitigation. |
 | Diagram | Reviewed and rendered SVG/PNG show all seven contracts, four planks, cash/shares/NAV/tickets/claims and the off-chain legal boundary. |
-| Tier 2, seven Sepolia deployments | Student confirms seven contract creations, six setup transactions, all 29 deployment checks and seven Etherscan source verifications. Some explorer results are Similar Match. Authentic screenshots are reported saved by the student but are not present in the inspected repository evidence inventory. |
+| Tier 2, seven Sepolia deployments | Student confirms seven contract creations, six setup transactions, all 29 deployment checks and seven Etherscan source verifications. Some explorer results are Similar Match. All seven original screenshots are committed in `bdc8dc1`, linked and inspected; six display Similar Match and RedemptionQueue displays Exact Match. |
 
 The formal PDF was unavailable. Questions were verified against lecturer source;
 rubric priorities and 40%/20%/25%/15% weights follow the user's supplied brief.
@@ -56,8 +56,8 @@ This report does not claim independent PDF verification or a guaranteed grade.
 ## Sepolia deployment and verification status
 
 The following external results are recorded from the student's confirmation;
-they are not presented as an independent RPC rerun or explorer inspection by
-the assistant:
+they are not presented as an independent RPC rerun. Screenshot classifications
+were subsequently checked against the original images, as noted below:
 
 - Network: Sepolia, chain ID **11155111**.
 - Public deployer:
@@ -72,11 +72,11 @@ the assistant:
   does not represent them as Exact Match. See the
   [README's Sepolia deployment table](../README.md#deployment-sepolia) for the
   seven public contract addresses and their explorer links.
-- Screenshots: the student reports having saved authentic explorer screenshots.
-  At the documentation review, `docs/evidence/` contained local logs and JSON
-  records but no Sepolia screenshot image files. Their attachment, filenames
-  and visible address/network/verification details therefore remain to be
-  checked before submission. No screenshot has been generated or substituted.
+- Screenshots: all seven original PNGs were committed in `bdc8dc1` and are
+  linked in [the evidence index](evidence/README.md). All seven links resolve
+  to existing files; each image shows Sepolia Testnet and the corresponding
+  deployed address. Six show Similar Match; RedemptionQueue shows Exact Match.
+  The original images have not been altered or substituted.
 
 Earlier statements and evidence recording an undeployed project describe the
 initial local-checkpoint stage. They remain part of the audit history; the
@@ -135,15 +135,16 @@ The README now records the seven actual Sepolia addresses and their Etherscan
 Code links, together with the student-confirmed seven creations, six setup
 transactions and 29 configuration checks. Historical preparation remains
 explicitly separated from this completed deployment. Source-code verification
-is not uniformly classified as Exact Match: some records are Similar Match,
-and individual categories await review of the authentic screenshots.
+is not uniformly classified as Exact Match: inspection of the original images
+supports six Similar Match labels and one Exact Match label for RedemptionQueue.
 
-Only the following documentation and local check-evidence files changed:
+The preceding documentation-finalization update changed the following
+documentation and local check-evidence files:
 
 - `README.md`, `docs/deployment-sepolia.md` and `docs/completion-report.md`:
   completed deployment, verification provenance and current readiness status.
-- `docs/evidence/README.md`: evidence index with seven outstanding screenshot
-  uploads and no image links to absent files.
+- `docs/evidence/README.md`: evidence index, now updated with seven existing
+  screenshot links and the match classifications visible in the original images.
 - `OVERLAY-MANIFEST.md`, `START-HERE-中文.md`, `docs/local-walkthrough.md` and
   `docs/packaging-review.md`: professional English status updates that preserve
   the earlier preparation and audit history.
@@ -164,11 +165,11 @@ a second execution of the student's Sepolia checker. Contracts, Foundry
 configuration, deployment scripts, tests, package and audit scripts, dependencies,
 assignment answers and architecture images remain unchanged.
 
-**Remaining evidence completion:** no Sepolia screenshot image is currently
-present in `docs/evidence/`. The student must upload the seven saved original
-images, link their actual filenames and preserve each explorer's displayed
-Exact Match or Similar Match classification. The automated audit does not
-check screenshot presence or independently establish explorer verification.
+**Screenshot consistency review:** all seven original PNGs from `bdc8dc1`
+are present and linked. Their visible addresses and match labels have been
+checked directly against the deployment record and evidence index. Original
+screenshot files remain unchanged. The automated audit alone does not perform
+image inspection or establish a current live explorer status.
 No final ZIP was created and nothing was submitted to Moodle during this
 update. Packaging and the final submission review remain subsequent steps.
 
@@ -252,13 +253,12 @@ public visibility; this task did not change it.
    ID, and distinguish Exact Match from Similar Match for each contract where
    the explorer provides that status. Deployment itself is student-confirmed
    complete; no additional broadcast approval is requested.
-3. Add the student's seven authentic explorer Code-tab screenshots to the
-   submission evidence. Check that each image clearly identifies the correct
-   Sepolia contract address and actual source-verification status. Include the
-   real transaction or verification records where required by the assignment;
-   do not create replacement screenshots or invent missing command results.
-4. Revalidate the existing evidence and run the audit and packager after the
-   screenshot evidence is complete. Recapture the full Foundry checks only if
+3. Retain the seven original explorer screenshots and the evidence index's
+   observed match labels: six Similar Match and Exact Match for RedemptionQueue.
+   Include real transaction or verification records where required by the
+   assignment; do not create replacement screenshots or invent command results.
+4. Revalidate the existing evidence and run the audit and packager for the final
+   submission package. Recapture the full Foundry checks only if
    the tested source changes or the evidence validator fails. Inspect the
    final ZIP: keep complete `lib/`,
    exclude Git history, caches, `.env*`, wallets and credentials. Upload the ZIP

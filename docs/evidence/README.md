@@ -8,29 +8,26 @@ The network is chain ID `11155111`; the public deployer is
 `0x87b370f0f860831DA4000dDAF742f8fa7fdbB549`. The completed deployment record and
 explorer links are in [the Sepolia record](../deployment-sepolia.md).
 
-The student identifies the following seven files as the original authentic
-Etherscan screenshots. The links retain the supplied filenames. At the time of
-this index update, these PNG files were not present in the available repository
-checkout, so their visible verification classifications could not be inspected.
-No Exact Match or Similar Match classification is inferred from a filename or
-from another contract's verification record.
+The seven original Etherscan screenshots were committed to `main` in
+`bdc8dc1`. All seven links below resolve to existing PNG files. Each original
+image was inspected directly: it displays Sepolia Testnet and the corresponding
+contract address recorded in the deployment table. Match classifications below
+transcribe only the legible verification labels in the original images.
 
 | Contract | Authentic Etherscan screenshot | Visible match classification |
 |---|---|---|
-| MockUSDC | [01-mockusdc.png](01-mockusdc.png) | Not assessed. |
-| ComplianceRegistry | [02-compliance.png](02-compliance.png) | Not assessed. |
-| MockPriceFeed | [03-pricefeed.png](03-pricefeed.png) | Not assessed. |
-| TBillToken | [04-tbilltoken.png](04-tbilltoken.png) | Not assessed. |
-| MockTBillCustodian | [05-custodian.png](05-custodian.png) | Not assessed. |
-| TBillVault | [06-vault.png](06-vault.png) | Not assessed. |
-| RedemptionQueue | [07-queue.png](07-queue.png) | Not assessed. |
+| MockUSDC | [01-mockusdc.png](01-mockusdc.png) | Similar Match |
+| ComplianceRegistry | [02-compliance.png](02-compliance.png) | Similar Match |
+| MockPriceFeed | [03-pricefeed.png](03-pricefeed.png) | Similar Match |
+| TBillToken | [04-tbilltoken.png](04-tbilltoken.png) | Similar Match |
+| MockTBillCustodian | [05-custodian.png](05-custodian.png) | Similar Match |
+| TBillVault | [06-vault.png](06-vault.png) | Similar Match |
+| RedemptionQueue | [07-queue.png](07-queue.png) | Exact Match |
 
-All seven source-code verification records were confirmed by the student, and
-some display Similar Match. Record a contract's Exact Match or Similar Match
-classification only when that wording is legible in its original screenshot.
-When the wording is not visible, leave the classification unassigned. The PNG
-files must be available at the linked paths before final submission review;
-no screenshots have been generated, recreated or modified by this update.
+The original images support six Similar Match records and one Exact Match
+record, for RedemptionQueue. These observations describe the captured explorer
+pages; they are not a new live-chain or explorer query. No screenshot has been
+generated, recreated or modified by this update.
 
 ## Local check evidence
 

@@ -9,10 +9,10 @@ on-chain decimal, wiring and permission checks on chain ID `11155111`.
 
 All seven contracts have confirmed source-code verification records. Some
 records display **Similar Match** and must not be described as Exact Match.
-Seven authentic verification screenshots have been saved by the student but
-are not yet present in `docs/evidence/`. Their original files and individual
-match classifications remain to be added to the
-[evidence index](docs/evidence/README.md). No replacement images are required.
+All seven original verification screenshots are present in `docs/evidence/`
+following commit `bdc8dc1`. Their links and legible verification labels are
+recorded in the [evidence index](docs/evidence/README.md): six display Similar
+Match and RedemptionQueue displays Exact Match. The images remain unchanged.
 
 The [Sepolia record](docs/deployment-sepolia.md) preserves the original workflow
 as historical reproducibility instructions. Deployment has already been
@@ -26,8 +26,8 @@ configuration, dependencies, answers and architecture are preserved.
 
 Before submission:
 
-1. Add the seven original Etherscan screenshots and link their actual filenames.
-   Retain each explorer's displayed Exact Match or Similar Match classification.
+1. Review the seven linked original Etherscan screenshots and retain the
+   recorded per-contract Similar Match or Exact Match classification.
 2. Review the answers, architecture, evidence and formal Assignment Three PDF.
 3. Run `python3 scripts/capture-checks.py --check-evidence` and
    `python3 scripts/audit-submission.py`. If the tested source changes later,

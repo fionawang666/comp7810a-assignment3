@@ -13,7 +13,7 @@ The student confirmed successful deployment of all seven base contracts to
 | Total on-chain transactions | All 13 transactions succeeded. |
 | Decimal, wiring and permission validation | `python3 scripts/check-deployment.py --chain-id 11155111` passed all 29 checks. |
 | Etherscan source-code records | Verification was confirmed for all seven contracts; some display Similar Match. |
-| Authentic screenshots | Seven screenshots were saved by the student and await upload to `docs/evidence/`. |
+| Authentic screenshots | All seven original PNGs are committed in `bdc8dc1`, present in `docs/evidence/` and linked in the evidence index. |
 
 | Contract | Sepolia address | Etherscan source-code verification |
 |---|---|---|
@@ -26,11 +26,11 @@ The student confirmed successful deployment of all seven base contracts to
 | RedemptionQueue | `0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406` | [Verified source code](https://sepolia.etherscan.io/address/0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406#code) |
 
 The results above document the student's completed deployment. This editing task
-has not broadcast transactions, redeployed contracts, repeated the on-chain
-checker or independently inspected the screenshots. Individual transaction
-hashes and per-contract match classifications were not supplied and are not
-invented. The exact Exact Match or Similar Match wording must be retained from
-the relevant explorer page when the screenshots are indexed.
+has not broadcast transactions, redeployed contracts or repeated the on-chain
+checker. The original screenshots have now been inspected directly: six display
+Similar Match, while RedemptionQueue displays Exact Match. The evidence index
+records these visible per-contract classifications. Individual transaction
+hashes were not supplied and are not invented.
 
 The [evidence index](evidence/README.md) records the current screenshot inventory
 and the local documentation checks. Anvil addresses in `local-walkthrough.md`
@@ -197,14 +197,15 @@ forge verify-contract "$QUEUE" src/exercises/RedemptionQueue.sol:RedemptionQueue
 ## Evidence completion
 
 The README now records all seven actual addresses and their Etherscan Code
-links. The student has saved seven authentic verification screenshots; none is
-currently present in this repository's `docs/evidence/` directory. Upload those
-original files, then add links under their actual filenames in
-[evidence/README.md](evidence/README.md). Do not create replacement images or
-edit the verification pages shown in the screenshots.
+links. All seven authentic verification screenshots are present in
+`docs/evidence/`, following commit `bdc8dc1`. Their original filenames are linked
+in [evidence/README.md](evidence/README.md); every PNG link resolves to an existing
+file and each screenshot's displayed address matches the deployment record.
+The original images have not been modified.
 
-Some verified contracts display **Similar Match**. Record that classification
-exactly for each relevant contract; do not describe all seven records as Exact
-Match. No per-contract match category or transaction hash is inferred here.
+The original screenshots show **Similar Match** for MockUSDC,
+ComplianceRegistry, MockPriceFeed, TBillToken, MockTBillCustodian and TBillVault,
+and **Exact Match** for RedemptionQueue. These labels are visible in the images;
+no match category or transaction hash is inferred.
 The existing automated audit validates table structure and local test evidence,
 not screenshot existence or the explorer's source-verification classification.

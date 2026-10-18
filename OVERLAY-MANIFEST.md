@@ -25,8 +25,9 @@ The original overlay omitted the following **by design**: official `src/` core c
 Sepolia transactions and explorer verification were unverified when the overlay
 was created. This status was superseded by the captured implementation checks
 and the student-confirmed seven-contract Sepolia deployment. The actual
-addresses and Code links now appear in the README. Authentic screenshot upload
-remains outstanding; no deployment address or verification image was invented.
+addresses and Code links now appear in the README. All seven authentic
+verification screenshots are committed in `bdc8dc1` and linked in the evidence
+index. No deployment address or verification image was invented.
 
 The container configuration extends the lecturer image with Python 3 and ZIP
 tools while preserving Foundry v1.8.3.
