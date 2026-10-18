@@ -1,6 +1,6 @@
-# Modification manifest
+# Historical completion-overlay manifest
 
-This is an **overlay** for the professor's official `hgwoops/rwa-lab-2026` repository, not a standalone project. Merge it into a clone of the official repository and keep its `lib/` dependencies.
+This manifest records the original completion **overlay** for the lecturer's `hgwoops/rwa-lab-2026` repository. It describes the package before assembly, not the current completed project. The full source and dependencies have since been assembled and validated; the student has subsequently completed the seven Sepolia deployments and source-code verifications. Current status is documented in [README.md](README.md), [the completion report](docs/completion-report.md) and [the evidence index](docs/evidence/README.md).
 
 | Official assignment | Included file(s) |
 |---|---|
@@ -19,8 +19,14 @@ This is an **overlay** for the professor's official `hgwoops/rwa-lab-2026` repos
 | Preflight and evidence | `scripts/preflight-project.py`, `scripts/audit-submission.py`, `scripts/capture-checks.py` |
 | Final packaging | `scripts/package-submission.py` |
 
-Missing from this overlay **by design**: official `src/` core contracts, official `test/exercises/02_QueueTasks.t.sol` (unchanged acceptance tests), `script/Deploy.s.sol`, and the required `lib/` dependencies. These must come from the original professor repository. Do not upload this overlay alone to Moodle.
+The original overlay omitted the following **by design**: official `src/` core contracts, official `test/exercises/02_QueueTasks.t.sol` (unchanged acceptance tests), `script/Deploy.s.sol`, and the required `lib/` dependencies. These files were subsequently imported from the lecturer repository, including all 662 bundled library files. The overlay alone was never a complete submission.
 
-**Not yet verified**: Solidity compilation, Foundry acceptance tests, Sepolia transactions, Etherscan source code verification. The attached guide explains how to produce genuine results in your Codespace. No actual deployment addresses are fabricated.
+**Historical verification status:** compilation, Foundry acceptance tests,
+Sepolia transactions and explorer verification were unverified when the overlay
+was created. This status was superseded by the captured implementation checks
+and the student-confirmed seven-contract Sepolia deployment. The actual
+addresses and Code links now appear in the README. Authentic screenshot upload
+remains outstanding; no deployment address or verification image was invented.
 
-| Container environment | `.devcontainer/Dockerfile` extends professor image with Python 3 and ZIP tools, preserving Foundry v1.8.3 |
+The container configuration extends the lecturer image with Python 3 and ZIP
+tools while preserving Foundry v1.8.3.

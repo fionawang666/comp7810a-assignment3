@@ -7,9 +7,10 @@ This project models a tokenized T-Bill fund: 6-decimal MockUSDC cash buys
 physical redemption and admission are separate trust boundaries.
 
 The implementation includes Ex0–Ex6, the optional Ex7 exploit, A–E discussion,
-and three separately tested local extensions. **Submission remains incomplete
-until the seven real Sepolia deployments and source verifications below are
-recorded.** Local Anvil addresses are not Sepolia evidence.
+and three separately tested local extensions. All seven base contracts have
+been deployed to Ethereum Sepolia and have Etherscan source-code verification
+records, as confirmed by the student. The authentic verification screenshots
+still need to be added to the repository before final submission review.
 
 ## Rubric and deadline
 
@@ -30,7 +31,8 @@ Use Foundry **v1.8.3** and Solidity **0.8.24**, as in `.devcontainer/`.
 ```bash
 git clone https://github.com/fionawang666/comp7810a-assignment3.git
 cd comp7810a-assignment3
-# Until the pull request is merged, check out its codex/complete-rwa-lab branch.
+# Use the documentation review branch until its pull request is merged:
+git switch codex/finalize-sepolia-documentation
 make doctor
 make test
 make exercise
@@ -107,32 +109,45 @@ Anvil's account-secret display. Obtain public account addresses using
 
 ## Deployment (Sepolia)
 
-**Mandatory Tier 2 (20%). No Sepolia transaction has been broadcast here.**
+**Mandatory Tier 2 (20%): deployment and source-code verification completed.**
 
-| Contract | Sepolia address | Etherscan verification |
+- **Network:** Ethereum Sepolia, chain ID `11155111`.
+- **Public deployer:** `0x87b370f0f860831DA4000dDAF742f8fa7fdbB549`.
+- **Transactions:** seven contract creations and six role-assignment or wiring
+  transactions succeeded, for a total of **13 successful on-chain transactions**.
+- **Configuration validation:** `python3 scripts/check-deployment.py --chain-id 11155111`
+  passed all **29 on-chain decimal, wiring and permission checks**.
+- **Source-code verification:** Etherscan verification records were confirmed
+  for all seven deployed contracts.
+
+| Contract | Sepolia address | Etherscan source-code verification |
 |---|---|---|
-| MockUSDC | NOT DEPLOYED YET | NOT VERIFIED YET |
-| ComplianceRegistry | NOT DEPLOYED YET | NOT VERIFIED YET |
-| MockPriceFeed | NOT DEPLOYED YET | NOT VERIFIED YET |
-| TBillToken | NOT DEPLOYED YET | NOT VERIFIED YET |
-| MockTBillCustodian | NOT DEPLOYED YET | NOT VERIFIED YET |
-| TBillVault | NOT DEPLOYED YET | NOT VERIFIED YET |
-| RedemptionQueue | NOT DEPLOYED YET | NOT VERIFIED YET |
+| MockUSDC | `0x25B1A3CAD54102f0c798697057f642fa54215aEC` | [Verified source code](https://sepolia.etherscan.io/address/0x25B1A3CAD54102f0c798697057f642fa54215aEC#code) |
+| ComplianceRegistry | `0x82990740bFF5089d66b323cF27187f2d0539A0c4` | [Verified source code](https://sepolia.etherscan.io/address/0x82990740bFF5089d66b323cF27187f2d0539A0c4#code) |
+| MockPriceFeed | `0x9603c3E0177FC72b8bB3387761b30bc1619994A5` | [Verified source code](https://sepolia.etherscan.io/address/0x9603c3E0177FC72b8bB3387761b30bc1619994A5#code) |
+| TBillToken | `0x99469750CCF235fc004021229274AbE005b75612` | [Verified source code](https://sepolia.etherscan.io/address/0x99469750CCF235fc004021229274AbE005b75612#code) |
+| MockTBillCustodian | `0xAebC532482aC32F70568b173f4F1339A7fB65A54` | [Verified source code](https://sepolia.etherscan.io/address/0xAebC532482aC32F70568b173f4F1339A7fB65A54#code) |
+| TBillVault | `0xdA9EA7738eF4134ac911b9dBa23012aD69f1d177` | [Verified source code](https://sepolia.etherscan.io/address/0xdA9EA7738eF4134ac911b9dBa23012aD69f1d177#code) |
+| RedemptionQueue | `0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406` | [Verified source code](https://sepolia.etherscan.io/address/0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406#code) |
 
-[docs/deployment-sepolia.md](docs/deployment-sepolia.md) contains exact dry-run,
-broadcast, constructor-argument verification and role/wiring inspection commands
-for all seven contracts. Use a separate funded Sepolia wallet selected through
-an encrypted Foundry keystore (`--account`) or hardware wallet. `DEPLOYER` is
-its public address. The scripts never read a wallet private key. Keep actual
-`.env` files, RPC credentials and keystores outside version control and screenshots.
+The deployment and validation results above were supplied and confirmed by the
+student for this documentation update. Some contracts display **Similar Match**.
+This designation is preserved as reported; source-code verification is not
+represented as Exact Match for every contract. Individual match classifications
+should be recorded from each actual Etherscan Code page and its corresponding
+screenshot rather than inferred from another contract's status.
 
-Broadcasting requires the user's explicit approval and manual signer interaction.
-The cloud session has no configured Sepolia RPC, Etherscan API credential or
-wallet signer; shell network operations require scoped network permission. Compilation and
-local transactions do not establish remote deployment or verification success.
-Record real addresses, transactions, correct verification status (Exact or Similar
-Match), and authentic Etherscan evidence after execution. Do not substitute local
-addresses or a generated screenshot.
+The student has saved seven authentic Etherscan screenshots. None is currently
+present in `docs/evidence/`. The [evidence index](docs/evidence/README.md) records
+this outstanding upload and will link the original files once they are present.
+No screenshot has been generated, altered or substituted.
+
+[docs/deployment-sepolia.md](docs/deployment-sepolia.md) records the completed
+deployment and retains the earlier simulation, deployment and source-verification
+commands as historical reproducibility instructions. These commands do not
+require redeploying the contracts listed above. No transactions were broadcast
+and no on-chain configuration checks were rerun during this documentation-only
+update. The previously recorded Anvil addresses remain local demonstration data.
 
 ## Optional work and teaching limitations
 
@@ -172,13 +187,21 @@ python3 scripts/audit-submission.py
 python3 scripts/package-submission.py
 ```
 
-These commands intentionally fail until current passing check evidence and all
-seven distinct real Sepolia addresses/verification links are present. The package
-retains `lib/` and excludes Git history, build caches, broadcast files, `.env*`,
-wallet/keystore files, secrets and other archives. The scripts are guardrails;
-review the ZIP contents and genuine verification evidence before Moodle upload.
-No final submission ZIP is claimed while deployment rows are missing.
+The audit checks the seven deployment rows, matching explorer links, written
+answers and the integrity of the existing Foundry evidence. Documentation-only
+changes do not alter the source snapshot to which that evidence is bound.
+The exact results of the checks requested for this update are recorded in
+[the completion report](docs/completion-report.md) and the
+[evidence index](docs/evidence/README.md).
 
-Review the PR, approve and perform Sepolia deployment, fill the seven rows, attach
-real verification evidence, rerun capture/audit/package, then upload the resulting
-ZIP to Moodle and confirm the final submitted state before the deadline.
+An automated audit result does not establish that screenshots are present or
+independently prove the explorer's verification status. The seven authentic
+screenshots remain an outstanding evidence upload even if the audit passes.
+After adding them, link their actual filenames, retain each displayed match
+classification, and review the complete submission against the assignment PDF.
+
+The package retains `lib/` and excludes Git history, build caches, broadcast
+files, `.env*`, wallet or keystore files, credentials and other archives. No final
+ZIP has been created and nothing has been submitted to Moodle during this
+update. Review the final archive and confirm the Moodle submission state
+personally before the course deadline.

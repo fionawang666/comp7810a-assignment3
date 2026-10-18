@@ -1,6 +1,12 @@
 # Submission audit and packaging review
 
-The packaging code is ready for review. No final submission ZIP was generated: the seven Sepolia rows remain truthful deployment/verification placeholders, and the packaging gate rejects them. No wallet credentials were read or used.
+This document preserves the packaging review performed before the student
+completed Sepolia deployment. At that checkpoint, no final submission ZIP was
+generated because the seven deployment rows were placeholders and the packaging
+gate correctly rejected them. The README now contains the actual deployed
+addresses and verification links. Current local audit results are recorded
+separately below; the original exit codes and raw logs remain historical
+records. No wallet credential material was accessed during this review.
 
 ## Changes
 
@@ -11,7 +17,7 @@ The packaging code is ready for review. No final submission ZIP was generated: t
 - `scripts/package-submission.py` runs the full audit first. It creates no output when that audit fails. Successful packaging writes a temporary ZIP, verifies CRC and exact file inventory, validates source/evidence freshness again and only then replaces the final ZIP atomically.
 - Explorer links are structural checks. They do not prove that Etherscan has verified the source. Authentic explorer verification and screenshots still require manual review after actual deployments.
 
-## Actual executed checks
+## Historical executed checks
 
 | Command | Actual exit | Result |
 |---|---:|---|
@@ -24,13 +30,40 @@ The scratch regression script creates temporary fixtures outside the repository 
 
 Answer word counts observed by the real audit: A1 217, A2 230, B1 243, B2 236, C1 228, C2 246, D1 249, D2 241. All meet 150–300 words.
 
-The root task will capture fresh Foundry evidence after all source/script edits are stable, then rerun the audit. The seven real Sepolia deployment rows must continue to block final packaging until completed truthfully. No fabricated addresses, explorer screenshots or passing Foundry outputs have been added.
+The original review required capture of stable-source Foundry evidence and a
+subsequent audit. At that time, the missing deployment rows were a valid
+packaging blocker. The captured evidence and the student's later completed
+Sepolia deployment supersede that earlier readiness status. No addresses,
+screenshots or passing check outputs have been fabricated.
 
-## Final readiness run after Foundry capture
+## Historical readiness run after Foundry capture
 
 The root task reran both commands after capture. The evidence validator exited
 0 and reported current successful results for all seven required commands.
 `audit-submission.py` and `package-submission.py` still exited **1**, exclusively
-because all seven real Sepolia deployment/verification rows are incomplete.
+because all seven real Sepolia deployment/verification rows were incomplete
+at that historical checkpoint.
 No final ZIP was generated. Full actual outputs are in
 `evidence/final-audit.log` and `evidence/final-package.log`.
+
+## Current documentation audit after completed deployment
+
+After the README was updated with the student's seven actual Sepolia addresses
+and matching Etherscan Code links, the following requested checks were executed:
+
+| Command | Actual exit | Current result |
+|---|---:|---|
+| `python3 scripts/capture-checks.py --check-evidence` | 0 | Existing successful seven-command evidence is current for the unchanged source snapshot. |
+| `python3 scripts/audit-submission.py` | 0 | `Preflight: PASS`; deployment rows, answer lengths and existing local evidence accepted. |
+
+Full current outputs are in `evidence/documentation-check-evidence.log` and
+`evidence/documentation-audit.log`, with exit-code metadata in
+`evidence/documentation-checks.json`. The package script was not executed during
+this update, and no new ZIP was generated.
+
+The student has saved seven authentic explorer screenshots, but the files are
+not yet present in `docs/evidence/`. Upload and index them before final
+submission review, preserving each displayed Exact Match or Similar Match
+classification. The audit's success does not check screenshot presence or
+constitute an independent explorer verification. No package or audit script was
+modified for this documentation update.
