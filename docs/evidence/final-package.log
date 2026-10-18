@@ -1,0 +1,18 @@
+Evidence current: all seven required commands exited 0 for this source snapshot.
+A1 word count 217
+A2 word count 230
+B1 word count 243
+B2 word count 236
+C1 word count 228
+C2 word count 246
+D1 word count 249
+D2 word count 241
+Preflight: REQUIRES ATTENTION
+ - Complete the real Sepolia deployment and verification row for MockUSDC
+ - Complete the real Sepolia deployment and verification row for ComplianceRegistry
+ - Complete the real Sepolia deployment and verification row for MockPriceFeed
+ - Complete the real Sepolia deployment and verification row for TBillToken
+ - Complete the real Sepolia deployment and verification row for MockTBillCustodian
+ - Complete the real Sepolia deployment and verification row for TBillVault
+ - Complete the real Sepolia deployment and verification row for RedemptionQueue
+Packaging blocked: complete the submission audit first.

@@ -1,0 +1,127 @@
+No files changed, compilation skipped
+
+Ran 6 tests for test/tier3/OptionalExtensions.t.sol:OptionalExtensionsTest
+[PASS] test_Tier3_ChainlinkAdapter_PreservesRoundMetadata() (gas: 573347)
+[PASS] test_Tier3_FreshNav_Normalizes18DecimalsToEight() (gas: 680250)
+[PASS] test_Tier3_IncompleteRoundAndNonPositiveNavRejected() (gas: 761049)
+[PASS] test_Tier3_RestrictedSecurityToken_ComplianceAndFreeze() (gas: 1865372)
+[FAIL: Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+] test_Tier3_StaleNavRejected() (gas: 680445)
+Traces:
+  [680445] OptionalExtensionsTest::test_Tier3_StaleNavRejected()
+    ├─ [0] VM::warp(864000 [8.64e5])
+    │   └─ ← [Return]
+    ├─ [246068] → new AdjustableFeed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 572 bytes of code
+    ├─ [354952] → new NavSafetyReader@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   ├─ [2301] AdjustableFeed::decimals() [staticcall]
+    │   │   └─ ← [Return] 8
+    │   └─ ← [Return] 1351 bytes of code
+    ├─ [0] VM::warp(867601 [8.676e5])
+    │   └─ ← [Return]
+    ├─ [0] VM::expectRevert(E+)
+    │   └─ ← [Return]
+    ├─ [10222] NavSafetyReader::freshNav8() [staticcall]
+    │   ├─ [6689] AdjustableFeed::latestRoundData() [staticcall]
+    │   │   └─ ← [Return] 1, 100000000 [1e8], 864000 [8.64e5], 864000 [8.64e5], 1
+    │   └─ ← [Revert] StaleNav(864000 [8.64e5], 867601 [8.676e5])
+    └─ ← [Revert] Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+
+
+Backtrace:
+  at NavSafetyReader.freshNav8
+  at OptionalExtensionsTest.test_Tier3_StaleNavRejected
+
+[FAIL: Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+] test_Tier3_StalePriceActuallyBlocksSubscriptions() (gas: 3604264)
+Traces:
+  [3604264] OptionalExtensionsTest::test_Tier3_StalePriceActuallyBlocksSubscriptions()
+    ├─ [0] VM::warp(864000 [8.64e5])
+    │   └─ ← [Return]
+    ├─ [246068] → new AdjustableFeed@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 572 bytes of code
+    ├─ [354952] → new NavSafetyReader@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   ├─ [2301] AdjustableFeed::decimals() [staticcall]
+    │   │   └─ ← [Return] 8
+    │   └─ ← [Return] 1351 bytes of code
+    ├─ [519487] → new MockUSDC@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 1915 bytes of code
+    ├─ [417249] → new ComplianceRegistry@0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+    │   ├─ emit RoleGranted(role: 0x0000000000000000000000000000000000000000000000000000000000000000, account: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   ├─ emit RoleGranted(role: 0x442a94f1a1fac79af32856af2a64f63648cfa2ef3b98610a5bb7cbec4cee6985, account: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return] 1428 bytes of code
+    ├─ [1069878] → new TBillToken@0xc7183455a4C133Ae270771860664b6B7ec320bB1
+    │   ├─ emit RoleGranted(role: 0x0000000000000000000000000000000000000000000000000000000000000000, account: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   ├─ emit RoleGranted(role: 0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6, account: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   ├─ emit RoleGranted(role: 0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a, account: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return] 4070 bytes of code
+    ├─ [385372] → new GuardedSubscriptionVault@0xa0Cb889707d426A7A386870A03bc70d1b0697598
+    │   └─ ← [Return] 1515 bytes of code
+    ├─ [260] TBillToken::MINTER_ROLE() [staticcall]
+    │   └─ ← [Return] 0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6
+    ├─ [51469] TBillToken::grantRole(0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6, GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598])
+    │   ├─ emit RoleGranted(role: 0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6, account: GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], sender: OptionalExtensionsTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Stop]
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615]
+    ├─ [0] VM::label(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], "subscribed-alice")
+    │   └─ ← [Return]
+    ├─ [48062] ComplianceRegistry::setWhitelisted(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], true)
+    │   ├─ emit WhitelistUpdated(account: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], status: true)
+    │   └─ ← [Stop]
+    ├─ [68424] MockUSDC::faucet(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], 200000000 [2e8])
+    │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], amount: 200000000 [2e8])
+    │   └─ ← [Stop]
+    ├─ [0] VM::startPrank(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615])
+    │   └─ ← [Return]
+    ├─ [46331] MockUSDC::approve(GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 200000000 [2e8])
+    │   ├─ emit Approval(owner: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], spender: GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], amount: 200000000 [2e8])
+    │   └─ ← [Return] true
+    ├─ [136690] GuardedSubscriptionVault::subscribe(100000000 [1e8])
+    │   ├─ [10595] NavSafetyReader::freshNav8() [staticcall]
+    │   │   ├─ [6689] AdjustableFeed::latestRoundData() [staticcall]
+    │   │   │   └─ ← [Return] 1, 100000000 [1e8], 864000 [8.64e5], 864000 [8.64e5], 1
+    │   │   └─ ← [Return] 100000000 [1e8]
+    │   ├─ [35651] MockUSDC::transferFrom(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 100000000 [1e8])
+    │   │   ├─ emit Transfer(from: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], to: GuardedSubscriptionVault: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], amount: 100000000 [1e8])
+    │   │   └─ ← [Return] true
+    │   ├─ [57076] TBillToken::mint(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], 100000000000000000000 [1e20])
+    │   │   ├─ [2517] ComplianceRegistry::isWhitelisted(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615]) [staticcall]
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], amount: 100000000000000000000 [1e20])
+    │   │   └─ ← [Stop]
+    │   ├─ emit Subscribed(user: subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615], assets: 100000000 [1e8], shares: 100000000000000000000 [1e20], nav: 100000000 [1e8])
+    │   └─ ← [Return] 100000000000000000000 [1e20]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [2582] TBillToken::balanceOf(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615]) [staticcall]
+    │   └─ ← [Return] 100000000000000000000 [1e20]
+    ├─ [0] VM::warp(867601 [8.676e5])
+    │   └─ ← [Return]
+    ├─ [0] VM::expectRevert(E+)
+    │   └─ ← [Return]
+    ├─ [0] VM::prank(subscribed-alice: [0x1157D6227c069a9E23Ff9643E19f54c720bf4615])
+    │   └─ ← [Return]
+    ├─ [34398] GuardedSubscriptionVault::subscribe(100000000 [1e8])
+    │   ├─ [10222] NavSafetyReader::freshNav8() [staticcall]
+    │   │   ├─ [6689] AdjustableFeed::latestRoundData() [staticcall]
+    │   │   │   └─ ← [Return] 1, 100000000 [1e8], 864000 [8.64e5], 864000 [8.64e5], 1
+    │   │   └─ ← [Revert] StaleNav(864000 [8.64e5], 867601 [8.676e5])
+    │   └─ ← [Revert] StaleNav(864000 [8.64e5], 867601 [8.676e5])
+    └─ ← [Revert] Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+
+
+Backtrace:
+  at NavSafetyReader.freshNav8
+  at GuardedSubscriptionVault.subscribe
+  at OptionalExtensionsTest.test_Tier3_StalePriceActuallyBlocksSubscriptions
+
+Suite result: FAILED. 4 passed; 2 failed; 0 skipped; finished in 2.98ms (2.59ms CPU time)
+
+Ran 1 test suite in 13.15ms (2.98ms CPU time): 4 tests passed, 2 failed, 0 skipped (6 total tests)
+
+Failing tests:
+Encountered 2 failing tests in test/tier3/OptionalExtensions.t.sol:OptionalExtensionsTest
+[FAIL: Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+] test_Tier3_StaleNavRejected() (gas: 680445)
+[FAIL: Error != expected error: StaleNav(864000 [8.64e5], 867601 [8.676e5]) != E+] test_Tier3_StalePriceActuallyBlocksSubscriptions() (gas: 3604264)
+
+Encountered a total of 2 failing tests, 4 tests succeeded
+
+Tip: Run `forge test --rerun` to retry only the 2 failed tests
+Tip: Run `forge test --debug --match-test <TEST_NAME>` to inspect one failing test in the debugger
