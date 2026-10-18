@@ -8,27 +8,29 @@ The network is chain ID `11155111`; the public deployer is
 `0x87b370f0f860831DA4000dDAF742f8fa7fdbB549`. The completed deployment record and
 explorer links are in [the Sepolia record](../deployment-sepolia.md).
 
-The student has saved seven authentic Etherscan screenshots, but no screenshot
-file is currently present in this directory. Consequently, this index contains
-no image links or invented filenames. Add each original screenshot under its
-actual filename, then replace the corresponding upload status with a link.
-Do not generate, recreate or modify the screenshots.
+The student identifies the following seven files as the original authentic
+Etherscan screenshots. The links retain the supplied filenames. At the time of
+this index update, these PNG files were not present in the available repository
+checkout, so their visible verification classifications could not be inspected.
+No Exact Match or Similar Match classification is inferred from a filename or
+from another contract's verification record.
 
-| Contract | Authentic screenshot in this repository | Match classification |
+| Contract | Authentic Etherscan screenshot | Visible match classification |
 |---|---|---|
-| MockUSDC | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| ComplianceRegistry | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| MockPriceFeed | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| TBillToken | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| MockTBillCustodian | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| TBillVault | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
-| RedemptionQueue | Awaiting student upload | Record the explorer's actual Exact Match or Similar Match wording after upload. |
+| MockUSDC | [01-mockusdc.png](01-mockusdc.png) | Not assessed. |
+| ComplianceRegistry | [02-compliance.png](02-compliance.png) | Not assessed. |
+| MockPriceFeed | [03-pricefeed.png](03-pricefeed.png) | Not assessed. |
+| TBillToken | [04-tbilltoken.png](04-tbilltoken.png) | Not assessed. |
+| MockTBillCustodian | [05-custodian.png](05-custodian.png) | Not assessed. |
+| TBillVault | [06-vault.png](06-vault.png) | Not assessed. |
+| RedemptionQueue | [07-queue.png](07-queue.png) | Not assessed. |
 
 All seven source-code verification records were confirmed by the student, and
-some display Similar Match. The supplied confirmation did not enumerate the
-per-contract match categories; none is inferred in the table above. Screenshot
-upload and classification review remain manual evidence-completion steps even
-when the automated audit succeeds.
+some display Similar Match. Record a contract's Exact Match or Similar Match
+classification only when that wording is legible in its original screenshot.
+When the wording is not visible, leave the classification unassigned. The PNG
+files must be available at the linked paths before final submission review;
+no screenshots have been generated, recreated or modified by this update.
 
 ## Local check evidence
 
@@ -50,5 +52,5 @@ when the automated audit succeeds.
 
 The student confirmed the remote deployment and configuration-check results.
 This documentation task did not execute remote transactions or read private
-service credentials. Transaction hashes, remote command exit codes and missing
-screenshots have not been reconstructed from assumptions.
+service credentials. Transaction hashes, remote command exit codes and screenshot
+classifications have not been reconstructed from assumptions.
