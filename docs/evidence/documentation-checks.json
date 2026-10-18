@@ -1,0 +1,23 @@
+{
+  "executed_at_utc": "2026-10-18T18:40:20.262041+00:00",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "scripts/capture-checks.py",
+        "--check-evidence"
+      ],
+      "exit_code": 0,
+      "output": "docs/evidence/documentation-check-evidence.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/audit-submission.py"
+      ],
+      "exit_code": 0,
+      "output": "docs/evidence/documentation-audit.log"
+    }
+  ],
+  "scope": "Local documentation validation; no remote transactions or on-chain rechecks."
+}

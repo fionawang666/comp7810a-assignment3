@@ -1,13 +1,21 @@
 # Assignment Three completion and verification report
 
-Review branch: `codex/complete-rwa-lab` in `fionawang666/comp7810a-assignment3`.
+Documentation review branch: `codex/finalize-sepolia-documentation` in
+`fionawang666/comp7810a-assignment3`. Implementation
+[PR #1](https://github.com/fionawang666/comp7810a-assignment3/pull/1) was merged
+by the student at **2026-10-18 16:22:35 UTC**. This documentation update is a
+separate review from that completed implementation merge.
 Evidence files record their actual UTC timestamps. The client timezone is
-Asia/Shanghai. This is ready for code review; **Moodle submission
-is not complete**, because real Sepolia deployments and verification remain.
+Asia/Shanghai. The student has
+confirmed completion of the seven Sepolia deployments and Etherscan source
+verification. **Moodle submission is not complete**: authentic screenshot
+evidence still needs to be included and reviewed, and the final submission
+package must be checked and uploaded.
 
 ## Result and two original failures
 
-All seven required check commands actually exited **0**. The full Foundry run
+At the captured implementation checkpoint, all seven required check commands
+actually exited **0**. The full Foundry run
 reported **50 passed, 0 failed, 0 skipped**. The lecturer's seven core tests and
 eleven queue acceptance tests remain byte-identical to upstream. All 662
 bundled library files are intact. See `source-provenance.md` for the source
@@ -26,7 +34,7 @@ check or lecturer assertion was removed. Raw before/after logs are in
 
 ## Exercise and rubric status
 
-| Requirement | Local status and evidence |
+| Requirement | Status and evidence |
 |---|---|
 | Ex0 | Doctor passes all 6 environment checks; 7 original core tests pass. |
 | Ex1 | Real local Anvil run exits 0: seven deployments, 29 decimal/wiring/role checks, funding, subscription, NAV, enqueue, settlement and claim. `local-walkthrough.md` and `evidence/ex1-local.log`. |
@@ -39,11 +47,41 @@ check or lecturer assertion was removed. Raw before/after logs are in
 | A–D | Original lecturer questions preserved verbatim; eight answers are 217, 230, 243, 236, 228, 246, 249 and 241 words. All within 150–300. |
 | E | Seven real, distinct Ex2–Ex4 function names checked against source; additional exploit explains assumptions and mitigation. |
 | Diagram | Reviewed and rendered SVG/PNG show all seven contracts, four planks, cash/shares/NAV/tickets/claims and the off-chain legal boundary. |
-| Tier 2, seven Sepolia deployments | Deployment/verification commands and wiring checks prepared; no real Sepolia deployment or explorer verification obtained. Mandatory submission blocker. |
+| Tier 2, seven Sepolia deployments | Student confirms seven contract creations, six setup transactions, all 29 deployment checks and seven Etherscan source verifications. Some explorer results are Similar Match. Authentic screenshots are reported saved by the student but are not present in the inspected repository evidence inventory. |
 
 The formal PDF was unavailable. Questions were verified against lecturer source;
 rubric priorities and 40%/20%/25%/15% weights follow the user's supplied brief.
 This report does not claim independent PDF verification or a guaranteed grade.
+
+## Sepolia deployment and verification status
+
+The following external results are recorded from the student's confirmation;
+they are not presented as an independent RPC rerun or explorer inspection by
+the assistant:
+
+- Network: Sepolia, chain ID **11155111**.
+- Public deployer:
+  [`0x87b370f0f860831DA4000dDAF742f8fa7fdbB549`](https://sepolia.etherscan.io/address/0x87b370f0f860831DA4000dDAF742f8fa7fdbB549).
+- Transactions: all **seven contract-creation transactions and six setup
+  transactions** succeeded.
+- Deployment validation: the student reports that
+  `python3 scripts/check-deployment.py --chain-id 11155111` passed **29 checks**.
+  No independently captured Sepolia command exit code is asserted here.
+- Source verification: the student reports that **all seven contracts are
+  verified on Sepolia Etherscan**. Some results are **Similar Match**; the report
+  does not represent them as Exact Match. See the
+  [README's Sepolia deployment table](../README.md#deployment-sepolia) for the
+  seven public contract addresses and their explorer links.
+- Screenshots: the student reports having saved authentic explorer screenshots.
+  At the documentation review, `docs/evidence/` contained local logs and JSON
+  records but no Sepolia screenshot image files. Their attachment, filenames
+  and visible address/network/verification details therefore remain to be
+  checked before submission. No screenshot has been generated or substituted.
+
+Earlier statements and evidence recording an undeployed project describe the
+initial local-checkpoint stage. They remain part of the audit history; the
+student-confirmed deployment above supersedes that earlier deployment status.
+No new deployment or further wallet transaction is required by this report.
 
 ## Real check results
 
@@ -62,14 +100,14 @@ The evidence validator rejects changed sources, missing commands or failures.
 | `forge test` | 50 passed, 0 failed, 0 skipped across 8 suites | 0 |
 | `forge fmt --check` | No formatting differences | 0 |
 | `python3 scripts/capture-checks.py` | All seven commands captured and source remained stable | 0 |
-| `python3 scripts/capture-checks.py --check-evidence` | Current successful evidence | 0 |
+| `python3 scripts/capture-checks.py --check-evidence` | Successful evidence at the captured implementation checkpoint | 0 |
 | `forge clean`, then `forge build` | Clean build, compiler successful with warnings | 0 each |
 | `python3 scripts/preflight-project.py` | Files, TODO completion, diagram embed, eight answer lengths pass | 0 |
 | `python3 scripts/harden-demo-keys.py` | Key-use hygiene check passes | 0 |
 | `python3 scripts/local-walkthrough.py --port 18546` | Actual local broadcast and full Ex1 round trip pass | 0 |
 | `python3 /workspace/work/package-review.py` | Six scratch packaging/secret-selection regression checks pass | 0 |
-| `python3 scripts/audit-submission.py` | Expected readiness failure: seven missing real Sepolia rows only | 1 |
-| `python3 scripts/package-submission.py` | Correctly refuses a final ZIP for the same missing deployments | 1 |
+| `python3 scripts/audit-submission.py` | Historical, before the student-confirmed deployment: readiness failed because seven real Sepolia rows were missing | 1 |
+| `python3 scripts/package-submission.py` | Historical, before the student-confirmed deployment: final ZIP refused because those deployment rows were missing | 1 |
 | `git diff 66c314b --check` | Upstream vendored whitespace and raw terminal whitespace preserved; source/document-only diff check passes | 2 for full tree, 0 excluding vendored files and raw logs |
 
 Additional focused queue/deployment tests passed. Random trace evidence at
@@ -85,13 +123,63 @@ the successful walkthrough used scoped network permission. A fresh lecturer
 clone also succeeded with scoped network permission. These are resolved local
 runtime restrictions, not claimed Sepolia results.
 
-## Files and behavior changed
+The two historical readiness failures above must not be interpreted as current
+deployment failures. Their raw logs are preserved in
+`evidence/final-audit.log` and `evidence/final-package.log`. The current
+local checks are recorded separately below. The packager was not executed
+during this documentation update.
 
-The initial repository contained a README and completion archive. This branch
-assembles the full lecturer project plus the overlay while preserving student
-Git history and removing the temporary archive from the tracked final tree.
-The PR therefore includes the complete source and 662 unchanged library files.
-The principal implementation/review changes are:
+## Documentation finalization and current audit
+
+The README now records the seven actual Sepolia addresses and their Etherscan
+Code links, together with the student-confirmed seven creations, six setup
+transactions and 29 configuration checks. Historical preparation remains
+explicitly separated from this completed deployment. Source-code verification
+is not uniformly classified as Exact Match: some records are Similar Match,
+and individual categories await review of the authentic screenshots.
+
+Only the following documentation and local check-evidence files changed:
+
+- `README.md`, `docs/deployment-sepolia.md` and `docs/completion-report.md`:
+  completed deployment, verification provenance and current readiness status.
+- `docs/evidence/README.md`: evidence index with seven outstanding screenshot
+  uploads and no image links to absent files.
+- `OVERLAY-MANIFEST.md`, `START-HERE-中文.md`, `docs/local-walkthrough.md` and
+  `docs/packaging-review.md`: professional English status updates that preserve
+  the earlier preparation and audit history.
+- `docs/evidence/documentation-check-evidence.log`,
+  `docs/evidence/documentation-audit.log` and
+  `docs/evidence/documentation-checks.json`: actual output and exit-code records
+  from this documentation update.
+
+| Requested command | Actual output summary | Exit code |
+|---|---|---:|
+| `python3 scripts/capture-checks.py --check-evidence` | `Evidence current: all seven required commands exited 0 for this source snapshot.` | 0 |
+| `python3 scripts/audit-submission.py` | Evidence current; all eight answer word counts accepted; `Preflight: PASS` | 0 |
+
+The complete outputs are preserved in the two new logs, and the JSON record
+contains their exact argument lists, exit codes and execution timestamp.
+These are local validation results. They are not a fresh full Foundry run or
+a second execution of the student's Sepolia checker. Contracts, Foundry
+configuration, deployment scripts, tests, package and audit scripts, dependencies,
+assignment answers and architecture images remain unchanged.
+
+**Remaining evidence completion:** no Sepolia screenshot image is currently
+present in `docs/evidence/`. The student must upload the seven saved original
+images, link their actual filenames and preserve each explorer's displayed
+Exact Match or Similar Match classification. The automated audit does not
+check screenshot presence or independently establish explorer verification.
+No final ZIP was created and nothing was submitted to Moodle during this
+update. Packaging and the final submission review remain subsequent steps.
+
+## Implementation changes retained from the merged pull request
+
+The initial repository contained a README and completion archive. The merged
+implementation assembled the full lecturer project plus the overlay while
+preserving student Git history and removing the temporary archive from the
+tracked final tree.
+That pull request included the complete source and 662 unchanged library files.
+The principal implementation and review changes retained in the project are:
 
 - `src/exercises/RedemptionQueue.sol`, `test/exercises/01_BridgeTasks.t.sol`,
   `test/exercises/03_InvariantTasks.t.sol`, and `test/challenges/FalseNav.t.sol`:
@@ -115,10 +203,13 @@ The principal implementation/review changes are:
   real source-bound evidence, submission gates, credential exclusions,
   explicit original-core selection and repeatable CI artifact capture.
 
-No wallet private key or mnemonic was requested, read, used or committed.
-The local helper only inherited a narrow runtime-variable allowlist. Signing
-in Anvil used RPC unlocked accounts. No Sepolia transaction was submitted,
-no explorer screenshot was invented, and no pull request was merged.
+During the repository implementation work, no wallet private key or mnemonic
+was requested, read, used or committed. The local helper only inherited a narrow
+runtime-variable allowlist, and signing in Anvil used RPC unlocked accounts.
+The student subsequently executed the reported Sepolia deployment; the
+assistant did not submit those transactions. No explorer screenshot was
+invented. The student later merged implementation PR #1; this follow-up
+documentation update remains subject to its own review.
 The first-party credential-context scan found no suspicious paths; no actual
 `.env` or wallet credential file was present. The repository's metadata reports
 public visibility; this task did not change it.
@@ -153,19 +244,23 @@ public visibility; this task did not change it.
 
 ## USER ACTION REQUIRED
 
-1. Review the pull request, written answers, diagram and the actual Assignment
-   Three PDF. Approve any merge separately; no merge has been performed.
-2. Select a separate funded Sepolia signer you control. Configure reachable
-   Sepolia RPC and Etherscan credentials privately, keep keys/keystores outside
-   the repository, and review the dry run in `deployment-sepolia.md`.
-3. Explicitly approve the real deployment, then execute the seven-contract
-   broadcast using an encrypted keystore or hardware wallet. Verify all 13
-   transactions (7 creations plus 6 setup calls), run the read-only wiring
-   checker and execute the seven source-verification commands.
-4. Fill all seven README rows with actual distinct addresses and matching
-   explorer links. Record real transaction/verification results and authentic
-   Code-tab screenshots, distinguishing Exact and Similar Match.
-5. Rerun capture, audit and package. Inspect the final ZIP: keep complete `lib/`,
+1. Review the documentation follow-up, written answers, diagram and the actual
+   Assignment Three PDF. Implementation PR #1 has already been merged by the
+   student; review and approve any subsequent documentation merge separately.
+2. Review the recorded Sepolia address table against the student's successful
+   deployment and verification records. Preserve the public deployer and chain
+   ID, and distinguish Exact Match from Similar Match for each contract where
+   the explorer provides that status. Deployment itself is student-confirmed
+   complete; no additional broadcast approval is requested.
+3. Add the student's seven authentic explorer Code-tab screenshots to the
+   submission evidence. Check that each image clearly identifies the correct
+   Sepolia contract address and actual source-verification status. Include the
+   real transaction or verification records where required by the assignment;
+   do not create replacement screenshots or invent missing command results.
+4. Revalidate the existing evidence and run the audit and packager after the
+   screenshot evidence is complete. Recapture the full Foundry checks only if
+   the tested source changes or the evidence validator fails. Inspect the
+   final ZIP: keep complete `lib/`,
    exclude Git history, caches, `.env*`, wallets and credentials. Upload the ZIP
    to Moodle, confirm final submitted status and save authentic confirmation.
    The user reports the extended deadline as **20 October 2026, 23:55**; use the

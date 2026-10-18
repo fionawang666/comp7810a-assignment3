@@ -1,9 +1,48 @@
-# Seven-contract Sepolia deployment preparation
+# Sepolia deployment record and reproducibility instructions
 
-Status: **prepared, not broadcast and not explorer verified**. No Sepolia address,
-transaction receipt, or verification screenshot has been obtained in this task.
-The addresses in the local walkthrough are ephemeral Anvil addresses and must not
-be copied into the README's Sepolia table.
+## Completed deployment
+
+The student confirmed successful deployment of all seven base contracts to
+**Ethereum Sepolia (chain ID `11155111`)** using public deployer address
+`0x87b370f0f860831DA4000dDAF742f8fa7fdbB549`.
+
+| Verification item | Confirmed result |
+|---|---|
+| Contract creation | Seven deployments succeeded. |
+| Role assignment and contract wiring | All six setup transactions succeeded. |
+| Total on-chain transactions | All 13 transactions succeeded. |
+| Decimal, wiring and permission validation | `python3 scripts/check-deployment.py --chain-id 11155111` passed all 29 checks. |
+| Etherscan source-code records | Verification was confirmed for all seven contracts; some display Similar Match. |
+| Authentic screenshots | Seven screenshots were saved by the student and await upload to `docs/evidence/`. |
+
+| Contract | Sepolia address | Etherscan source-code verification |
+|---|---|---|
+| MockUSDC | `0x25B1A3CAD54102f0c798697057f642fa54215aEC` | [Verified source code](https://sepolia.etherscan.io/address/0x25B1A3CAD54102f0c798697057f642fa54215aEC#code) |
+| ComplianceRegistry | `0x82990740bFF5089d66b323cF27187f2d0539A0c4` | [Verified source code](https://sepolia.etherscan.io/address/0x82990740bFF5089d66b323cF27187f2d0539A0c4#code) |
+| MockPriceFeed | `0x9603c3E0177FC72b8bB3387761b30bc1619994A5` | [Verified source code](https://sepolia.etherscan.io/address/0x9603c3E0177FC72b8bB3387761b30bc1619994A5#code) |
+| TBillToken | `0x99469750CCF235fc004021229274AbE005b75612` | [Verified source code](https://sepolia.etherscan.io/address/0x99469750CCF235fc004021229274AbE005b75612#code) |
+| MockTBillCustodian | `0xAebC532482aC32F70568b173f4F1339A7fB65A54` | [Verified source code](https://sepolia.etherscan.io/address/0xAebC532482aC32F70568b173f4F1339A7fB65A54#code) |
+| TBillVault | `0xdA9EA7738eF4134ac911b9dBa23012aD69f1d177` | [Verified source code](https://sepolia.etherscan.io/address/0xdA9EA7738eF4134ac911b9dBa23012aD69f1d177#code) |
+| RedemptionQueue | `0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406` | [Verified source code](https://sepolia.etherscan.io/address/0x66A5f06Ca5709efE50c72206Bbdc4b7AE17A6406#code) |
+
+The results above document the student's completed deployment. This editing task
+has not broadcast transactions, redeployed contracts, repeated the on-chain
+checker or independently inspected the screenshots. Individual transaction
+hashes and per-contract match classifications were not supplied and are not
+invented. The exact Exact Match or Similar Match wording must be retained from
+the relevant explorer page when the screenshots are indexed.
+
+The [evidence index](evidence/README.md) records the current screenshot inventory
+and the local documentation checks. Anvil addresses in `local-walkthrough.md`
+refer to the earlier local demonstration and are separate from this deployment.
+
+## Historical preparation and reproducibility
+
+The sections below retain the workflow prepared before the student completed
+Sepolia deployment. They explain how the deployment was configured and how it
+can be reviewed. They are not a request to repeat deployment or verification;
+the completed addresses above remain the authoritative record for this
+submission. No credentials or signer material are included in this document.
 
 `script/Deploy.s.sol` reads only the public `DEPLOYER` address and uses
 `vm.startBroadcast(address)`. Foundry receives the signer separately through an
@@ -11,14 +50,15 @@ existing encrypted `--account` or a hardware wallet. Never place wallet private
 keys, mnemonics, keystores, or keystore passwords in this repository, its `.env`,
 reports, logs, or submission archive. The agent has not used a wallet private key.
 
-## Before the user approves a broadcast
+### Historical pre-broadcast preparation
 
-The user must select a testnet-only signer they control, arrange Sepolia ETH for
-gas, and configure a reachable Sepolia RPC and Etherscan API credential. Use the
-existing wallet's public address as `DEPLOYER`; do not provide its private key to
-the agent. The current cloud runtime reports no configured secret bindings, RPC
-runtime variables, or outbound identities. Therefore these commands are prepared
-instructions, not claimed Sepolia results.
+The original preparation required a student-controlled testnet signer, Sepolia
+ETH for gas, a reachable RPC endpoint and an Etherscan credential. The earlier
+cloud session had no configured signer or remote-service credentials and
+therefore prepared instructions only. The student subsequently completed the
+deployment and verification recorded above. Any future read-only validation
+should use privately configured service credentials; the public `DEPLOYER`
+address does not require disclosure of a private key.
 
 Run from the repository root with Foundry and Solidity 0.8.24 available. In this
 cloud environment, the toolchain is selected by:
@@ -47,12 +87,14 @@ transaction receipts confirm creation. A later account nonce may change them.
 The public-address script can also be reviewed locally without an RPC:
 `DEPLOYER=<your-public-address> forge script script/Deploy.s.sol:Deploy -vv`.
 
-## Broadcast only after explicit approval
+### Historical broadcast procedure
 
-The following commands submit real Sepolia transactions and spend the signer's
-test ETH. **They have not been run.** The keystore account name below refers to
-an account already configured outside the repository; replace it with the
-selected account name. The account's address must equal `DEPLOYER`.
+The following command is retained from the pre-deployment guide. It submits real
+Sepolia transactions and spends test ETH; it must not be rerun to document the
+existing deployment. The student has already completed the seven creations and
+six setup transactions. This documentation task did not execute the command.
+The account name is a historical example of an encrypted signer configured
+outside the repository, and is not a stored keystore or password.
 
 ```bash
 # User-approved broadcast with an existing encrypted keystore (interactive password).
@@ -80,14 +122,17 @@ this order, then runs the wiring calls:
 | 6 | `VAULT` | `src/TBillVault.sol:TBillVault` | `USDC, TBILL, FEED, CUSTODIAN, DEPLOYER` |
 | 7 | `QUEUE` | `src/exercises/RedemptionQueue.sol:RedemptionQueue` | `VAULT, TBILL, USDC, DEPLOYER` |
 
-Populate those seven public environment variables from the **mined** deployment
-record and logs. Check that all 13 transactions succeeded; contract creation
-alone does not establish that the six later setup transactions succeeded. If
-a transaction failed or the process stopped, inspect the real record before
-using Foundry's `--resume`; do not rerun blindly and create a second deployment.
+For the completed deployment, populate the public address variables from the
+address table above. The student confirmed success of all 13 transactions,
+including the six setup calls. The historical recovery guidance remains to
+inspect an actual failed or interrupted broadcast before considering
+`--resume`; it does not apply as a request to repeat this successful deployment.
 
-## Postdeployment checks
+## Postdeployment configuration checks
 
+The student confirmed that the command below passed all 29 configuration
+checks for the deployed Sepolia contracts. This documentation update does not
+claim a second execution or an independently observed exit code for that run.
 The checker is read-only and needs no signer. It rejects the wrong chain, missing
 code, zero addresses, missing roles, missing whitelist entries, and broken
 contract pointers. It does not claim that custody or NAV is verified off-chain.
@@ -114,11 +159,14 @@ mock faucet and `MockPriceFeed.setPrice` are publicly callable. Role gating on
 `vault.attest` does **not** protect the feed from direct external writes. These
 are lab mocks, not a secured production oracle or evidence of Treasury ownership.
 
-## Exact seven explorer verification commands
+## Historical source-verification commands
 
-These commands have **not been run against Sepolia**. Each must finish with
-exit code 0 and an actual explorer verification result. The common compiler and
-optimizer settings match this repository (Solidity 0.8.24, 200 runs).
+The commands below preserve the original verification procedure for
+reproducibility. The student subsequently confirmed source-code verification
+records for all seven Sepolia contracts. This documentation update does not
+claim to have executed these commands or observed their individual exit codes.
+The common compiler and optimizer settings match this repository
+(Solidity 0.8.24, 200 runs).
 `ETHERSCAN_API_KEY` is read by Foundry from the environment and is not printed.
 
 ```bash
@@ -146,10 +194,17 @@ forge verify-contract "$QUEUE" src/exercises/RedemptionQueue.sol:RedemptionQueue
   "${verify_args[@]}" --constructor-args "$(cast abi-encode 'constructor(address,address,address,address)' "$VAULT" "$TBILL" "$USDC" "$DEPLOYER")"
 ```
 
-After genuine success, update all seven rows under `## Deployment (Sepolia)` in
-the README with the actual addresses and `https://sepolia.etherscan.io/address/`
-links. Open each address's **Contract → Code** tab, confirm successful source
-verification, and take real screenshots with no wallet/credential material.
-Record the commands, exit codes and verified URLs in the submission evidence.
-Pending rows and screenshots remain a Moodle submission blocker until the user
-approves the deployment and completes these steps.
+## Evidence completion
+
+The README now records all seven actual addresses and their Etherscan Code
+links. The student has saved seven authentic verification screenshots; none is
+currently present in this repository's `docs/evidence/` directory. Upload those
+original files, then add links under their actual filenames in
+[evidence/README.md](evidence/README.md). Do not create replacement images or
+edit the verification pages shown in the screenshots.
+
+Some verified contracts display **Similar Match**. Record that classification
+exactly for each relevant contract; do not describe all seven records as Exact
+Match. No per-contract match category or transaction hash is inferred here.
+The existing automated audit validates table structure and local test evidence,
+not screenshot existence or the explorer's source-verification classification.

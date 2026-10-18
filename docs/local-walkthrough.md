@@ -97,5 +97,6 @@ $ forge test --match-path 'test/deployment/*.t.sol' -vv
 exit code: 0
 ```
 
-For deployment preparation and the outstanding user-approved Sepolia work, see
+For the student-confirmed completed Sepolia deployment and its historical
+reproducibility instructions, see
 [deployment-sepolia.md](deployment-sepolia.md).

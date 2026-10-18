@@ -1,24 +1,45 @@
-# Assignment Three：当前项目与提交步骤
+# Assignment Three: Project Status and Submission Preparation
 
-项目已整合老师的完整源码、保留全部 `lib/`，并完成练习及书面答案。
-最新的真实测试结果见 `docs/submission-checks.txt`，完成情况与限制见
-`docs/completion-report.md`。请先阅读根目录 `README.md`。
+The project contains the complete lecturer source, all bundled dependencies,
+completed exercises, written answers and architecture diagrams. The
+[README](README.md) records the seven actual Ethereum Sepolia contract addresses
+and Etherscan source-code links. The student has confirmed seven successful
+contract creations, six successful setup transactions, and 29 successful
+on-chain decimal, wiring and permission checks on chain ID `11155111`.
 
-正式 Tier 2（20%）仍需完成七个真实的 Sepolia 部署及 Etherscan 源码验证。
-当前 README 的七行占位符不代表部署成功，Anvil 地址也不能代替 Sepolia 地址。
-具体命令见 `docs/deployment-sepolia.md`。脚本使用公开 `DEPLOYER` 地址与
-加密 keystore 或硬件钱包签名；不要向聊天、代码或 Git 提供私钥或助记词。
-此工作没有广播任何 Sepolia 交易，广播前需要用户明确批准。
+All seven contracts have confirmed source-code verification records. Some
+records display **Similar Match** and must not be described as Exact Match.
+Seven authentic verification screenshots have been saved by the student but
+are not yet present in `docs/evidence/`. Their original files and individual
+match classifications remain to be added to the
+[evidence index](docs/evidence/README.md). No replacement images are required.
 
-本地 Ex1 示例使用 Anvil unlocked accounts，无需读取私钥。
-操作与实际输出见 `docs/local-walkthrough.md`。
+The [Sepolia record](docs/deployment-sepolia.md) preserves the original workflow
+as historical reproducibility instructions. Deployment has already been
+completed; this documentation update does not require another broadcast.
+The [local walkthrough](docs/local-walkthrough.md) describes Anvil only.
 
-用户说明 Moodle 延期至 2026 年 10 月 20 日 23:55；请以课程页面显示的时区
-及最终提交状态为准。本环境没有正式评分 PDF，评分权重依据用户提供的任务说明。
+The [completion report](docs/completion-report.md) distinguishes the historical
+implementation checks from the current documentation audit. The existing
+Foundry evidence records 50 passing tests. Source code, test coverage,
+configuration, dependencies, answers and architecture are preserved.
 
-1. 审阅 Pull Request、答案和架构图，不要未经批准合并。
-2. 使用独立且有测试 ETH 的 Sepolia 钱包完成七个部署及验证。
-3. 将真实地址、验证链接和真实截图写入 README 与 docs。
-4. 重跑 `python3 scripts/capture-checks.py`、`python3 scripts/audit-submission.py`
-   和 `python3 scripts/package-submission.py`。
-5. 检查 ZIP：保留 lib，排除 Git 历史、缓存和钱包文件；上传 Moodle 并确认已提交。
+Before submission:
+
+1. Add the seven original Etherscan screenshots and link their actual filenames.
+   Retain each explorer's displayed Exact Match or Similar Match classification.
+2. Review the answers, architecture, evidence and formal Assignment Three PDF.
+3. Run `python3 scripts/capture-checks.py --check-evidence` and
+   `python3 scripts/audit-submission.py`. If the tested source changes later,
+   recapture the full checks before packaging.
+4. After final evidence review, prepare and inspect the submission ZIP, retaining
+   complete `lib/` and excluding Git history, generated caches, environment
+   files and credentials. Keep private keys, seed phrases, encrypted keystores,
+   passwords and private service credentials outside the submission.
+5. Submit through Moodle personally and confirm the final submitted status.
+   The student reports the extended deadline as **20 October 2026, 23:55**;
+   confirm the course page's displayed timezone and deadline.
+
+No transaction was broadcast and nothing was submitted to Moodle during this
+documentation update. The formal PDF was not available in the workspace;
+rubric priorities follow the assignment brief supplied by the student.
