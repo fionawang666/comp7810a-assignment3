@@ -61,9 +61,10 @@ Full current outputs are in `evidence/documentation-check-evidence.log` and
 `evidence/documentation-checks.json`. The package script was not executed during
 this update, and no new ZIP was generated.
 
-The student has saved seven authentic explorer screenshots, but the files are
-not yet present in `docs/evidence/`. Upload and index them before final
-submission review, preserving each displayed Exact Match or Similar Match
-classification. The audit's success does not check screenshot presence or
-constitute an independent explorer verification. No package or audit script was
-modified for this documentation update.
+All seven authentic explorer screenshots are now present in `docs/evidence/`
+from commit `bdc8dc1`. Their links resolve to existing PNG files, and direct
+image inspection supports six Similar Match labels and one Exact Match label
+for RedemptionQueue. The evidence index preserves these per-contract labels.
+The audit does not perform screenshot inspection or query the live explorer.
+No package or audit script was modified, and no ZIP was generated during this
+documentation review.
